@@ -32,9 +32,6 @@ function carregarFuncionariosSemUsuario() {
 document.getElementById('formCadastroUsuario').addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio do formulário padrão
 
-    // Aqui você pode implementar a lógica para enviar os dados do formulário
-    // Por exemplo, usando fetch para enviar os dados para o servidor
-
     // Exibir uma mensagem de sucesso temporária
     document.getElementById('mensagem').textContent = 'Usuário cadastrado com sucesso!';
 });

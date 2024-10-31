@@ -1,0 +1,213 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    background-color: #1490D9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+
+.sessao-esquerda {
+    display: flex;
+    align-items: center;
+
+}
+
+.header-icon {
+    width: 30px; 
+    height: 30px;
+    margin-left: 10px;
+   
+
+}
+
+.header-title {
+    font-size: 25px; 
+    font-weight: bold;
+  
+}
+
+.sessao-direita {
+    display: flex;
+    align-items: center;
+    margin-right: 99px;
+}
+
+.logout-text {
+   margin-right: 10px;
+    color: #ffff;
+    font-size: 20px;
+}
+
+.logout-icon {
+    width: 23px; 
+    height: 23px;
+    cursor: pointer;
+   
+}
+
+.header-title {
+    color: white;
+    font-size: 25px;
+    margin-left: 30px;
+}
+
+main {
+    flex: 1;
+    text-align: center;
+    padding: 57px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.opcoes {
+    
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 500px;
+    padding-bottom: 40px;
+    
+}
+
+.opcoes h2 {
+    font-size: 23px;
+    margin-bottom: 15px;
+    margin-left: 80px;
+    color: #385084;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    gap: 10px;
+}
+
+h4{
+    margin-left: 10px;
+    padding: 2px;
+}
+
+.input-wrapper{
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0, 0.1);
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.input-wrapper input{
+    background-color: transparent;
+    border: none;
+}
+
+.input-wrapper input:focus-visible {
+    outline: none;
+}
+
+.input-wrapper select{
+    background-color: transparent;
+    border: none;
+}
+
+.input-wrapper select:focus-visible {
+    outline: none;
+}
+
+#situacao {         
+    position: relative;
+    right: 5px;
+    color: #7e7e7e; 
+}
+
+/* Quando o usuário selecionar uma opção diferente da primeira */
+#situacao option:not(:disabled) {
+    color: black;  /* Muda a cor do texto das outras opções para preto */
+}
+#situacao:invalid { /* Se o valor do select for vazio (ou seja, a opção placeholder estiver selecionada) */
+    color: #7e7e7e; /* Cor do placeholder */
+}
+#situacao:valid { /* Para garantir que a cor mude após uma seleção válida */
+    color: black;
+}
+
+#cargo {
+    position: relative;
+    right: 5px;
+    color: #7e7e7e; 
+}
+#cargo option:not(:disabled) {
+    color: black;
+}
+#cargo:invalid {
+    color: #7e7e7e; 
+}
+#cargo:valid {
+    color: black;
+}
+
+
+button {
+    background-color: #1490D9;
+    border: none;
+    padding: 8px;
+    width: 100px;
+    border-radius: 10px;
+    color: #ffff;
+    margin-left: 185px;
+    margin-top: 30px;
+    display: block;
+    width: 20%;
+    font-family: "Rubik", sans-serif;
+ }
+ button:hover {
+    background-color: #385084;
+ }
+
+.alinha h4{
+    color: #385084;
+}
+
+ .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+}
+
+  .alinha :hover{
+    border-color: #1490D9;
+}
+
+
+footer {
+    background-color: #1490D9;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+ 

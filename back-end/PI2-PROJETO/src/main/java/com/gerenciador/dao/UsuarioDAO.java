@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
-    private Connection connection;
+    private Connection	 connection;
 
     public UsuarioDAO(Connection connection) {
         this.connection = connection;

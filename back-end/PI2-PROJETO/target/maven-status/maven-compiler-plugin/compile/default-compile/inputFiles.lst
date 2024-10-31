@@ -1,2 +1,9 @@
-C:\Users\marcelo.acoelho\Documents\SENAC.PI2-Mercado-Facil\back-end\PI2-PROJETO\src\main\java\com\listeners\DatabaseInitializer.java
-C:\Users\marcelo.acoelho\Documents\SENAC.PI2-Mercado-Facil\back-end\PI2-PROJETO\src\main\java\com\repository\ConnectionFactory.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\model\Usuario.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gereciador\web\LoginServlet.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gerenciador\dao\ConnectionFactory.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gerenciador\dao\ProdutoDAO.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gereciador\web\CadastroUsuarioServlet.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gereciador\web\FuncionariosSemUsuarioServlet.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\listeners\DatabaseInitializer.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gerenciador\dao\UsuarioDAO.java
+C:\Users\lidio.gnascimento\Documents\SENAC.PI2-Mercado-Facil-develop\back-end\PI2-PROJETO\src\main\java\com\gereciador\web\DashboardServlet.java
