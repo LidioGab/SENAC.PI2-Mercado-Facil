@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição Usuário</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <!-- Parte de cima -->
+    <header class="cima">
+        <div class="mercadofacil">
+            <img src="img/supermarket-shop-svgrepo-com 1.svg" alt="">
+            <p>Mercado Fácil</p>
+        </div>
+        <div class="sair">
+            <img src="img/move_item.svg" alt="">
+            <p>Sair</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="section-englobamento">
+            <div class="editar-usuario">
+
+                <h1>Editar Usuário</h1>
+
+                <div class="colunas">
+                    <div class="barra-NOME">
+                        <img src="img/account_circle.svg" alt="">
+                        <input type="text" placeholder="Nome">
+                    </div>
+
+                    <div class="barra-EMAIL">
+                        <img src="img/mail.svg" alt="">
+                        <input type="text" placeholder="E-mail">
+                    </div>
+
+                    <div class="barra-CPF">
+                        <img src="img/id_card.svg" alt="">
+                        <input type="text" placeholder="CPF" maxlength="14" id="cpf">
+                    </div>
+
+                    <div class="barra-CARGO">
+                        <img src="img/work.svg" alt="">
+                        <select name="cargo" class="cargo-select">
+                            <option value="" disabled selected>Cargo</option>
+                            <option value="auxiliar-limpeza">Auxiliar de Limpeza</option>
+                            <option value="gerente">Gerente</option>
+                            <option value="atendente-caixa">Atendente de Caixa</option>
+                            <option value="estoquista">Estoquista</option>
+                        </select>
+                    </div>
+
+                    <div class="barra-SITUACAO">
+                        <img src="img/medical_information.svg" alt="">
+                        <select name="situacao" class="situacao-select">
+                            <option value="" disabled selected>Situação</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="botoes">
+                    <button class="botao-salvar">Salvar</button>
+                    <button class="botao-cancelar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
