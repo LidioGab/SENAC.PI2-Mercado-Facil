@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.cima {
+    background-color: #1490D9;
+    height: 80px;
+    margin-bottom: 20px;
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mercadofacil {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.mercadofacil>img {
+    margin-right: 10px;
+    width: 30px;
+    height: auto;
+}
+
+.sair {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    align-self: center;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.sair>img {
+    margin-right: 10px;
+    width: 25px;
+    height: auto;
+}
+
+.section-englobamento {
+    display: flex;
+    padding: 30px 0;
+    justify-content: center;
+}
+
+.editar-usuario {
+    color: #000;
+    background-color: #F6F6F6;
+    height: auto;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: column;
+}
+
+.editar-usuario>h1 {
+    padding: 20px;
+    text-align: center;
+    color: #385084;
+    font-size: 30px;
+}
+
+.colunas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.barra-NOME,
+.barra-EMAIL,
+.barra-CPF,
+.barra-CARGO,
+.barra-SITUACAO {
+    padding: 5px;
+    background-color: white;
+    width: calc(48% - 10px);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.barra-NOME>input,
+.barra-EMAIL>input,
+.barra-CPF>input,
+.barra-CARGO>input,
+.barra-SITUACAO>input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: calc(100% - 30px);
+}
+
+.barra-NOME>img,
+.barra-EMAIL>img,
+.barra-CPF>img,
+.barra-CARGO>img,
+.barra-SITUACAO>img {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.cargo-select,
+.situacao-select {
+    color: gray;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: calc(100% - 30px);
+}
+
+.cargo-select option,
+.situacao-select option {
+    color: black;
+}
+
+.cargo-select option:disabled,
+.situacao-select option:disabled {
+    color: gray;
+}
+
+.botao-salvar,
+.botao-cancelar {
+    background-color: #1490D9;
+    color: white;
+    padding: 10px;
+    border: 0px;
+    border-radius: 10px;
+    max-width: 80px;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+}
+
+.botoes{
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 150px; /* Limita a largura do contêiner */
+    margin: 0 auto; 
+}
+
+.botao-salvar:hover, .botao-cancelar:hover, .sair:hover{
+    transform: scale(1.20);
+    transition: transform 0.1s ease;
+}
+
+footer {
+    background-color: #1490D9;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
