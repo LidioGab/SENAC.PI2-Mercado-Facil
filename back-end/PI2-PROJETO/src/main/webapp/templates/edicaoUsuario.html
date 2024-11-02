@@ -5,19 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edição Usuário</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../static/css/edicaoUsuario.css">
 </head>
 
 <body>
     <!-- Parte de cima -->
     <header class="cima">
         <div class="mercadofacil">
-            <img src="img/supermarket-shop-svgrepo-com 1.svg" alt="">
-            <p>Mercado Fácil</p>
+        	<a href = "../dashboard">
+        	<img src="../static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+        	Mercado Fácil
+        	</a>
+            
         </div>
         <div class="sair">
-            <img src="img/move_item.svg" alt="">
+            
             <p>Sair</p>
+           	<img src="../static/images/edicaoUsuario/sair.svg" alt="">
+            
+            
         </div>
     </header>
 
@@ -29,22 +35,22 @@
 
                 <div class="colunas">
                     <div class="barra-NOME">
-                        <img src="img/account_circle.svg" alt="">
+                        <img src="../static/images/edicaoUsuario/simbolo_pessoa.svg" alt="">
                         <input type="text" placeholder="Nome">
                     </div>
 
                     <div class="barra-EMAIL">
-                        <img src="img/mail.svg" alt="">
+                        <img src="../static/images/edicaoUsuario/email.svg" alt="">
                         <input type="text" placeholder="E-mail">
                     </div>
 
                     <div class="barra-CPF">
-                        <img src="img/id_card.svg" alt="">
+                        <img src="../static/images/edicaoUsuario/id_card.svg" alt="">
                         <input type="text" placeholder="CPF" maxlength="14" id="cpf">
                     </div>
 
                     <div class="barra-CARGO">
-                        <img src="img/work.svg" alt="">
+                        <img src="../static/images/edicaoUsuario/work.svg" alt="">
                         <select name="cargo" class="cargo-select">
                             <option value="" disabled selected>Cargo</option>
                             <option value="auxiliar-limpeza">Auxiliar de Limpeza</option>
@@ -55,7 +61,7 @@
                     </div>
 
                     <div class="barra-SITUACAO">
-                        <img src="img/medical_information.svg" alt="">
+                        <img src="../ static/images/edicaoUsuario//medical_information.svg" alt="">
                         <select name="situacao" class="situacao-select">
                             <option value="" disabled selected>Situação</option>
                             <option value="ativo">Ativo</option>
@@ -73,7 +79,7 @@
     </section>
 
     <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
-    <script src="script.js"></script>
+    <script src="edicaoUsuario.js"></script>
 </body>
 
 </html>
