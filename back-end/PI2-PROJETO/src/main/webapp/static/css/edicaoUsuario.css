@@ -34,11 +34,26 @@ body {
     align-items: center;
 }
 
-.mercadofacil>img {
-    margin-right: 10px;
+.mercadofacil a{
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: white;
+	transition: transform 0.3s ease;
+}
+
+.mercadofacil a:hover, .botao-salvar:hover, .botao-cancelar:hover, .sair:hover{
+	 transform: scale(1.1);
+}
+
+.mercadofacil a >img {
+    margin-right: 15px;
     width: 30px;
     height: auto;
+    display: flex;
+    align-items: center;
 }
+
 
 .sair {
     padding: 30px;
@@ -48,12 +63,14 @@ body {
     margin-left: auto;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
 }
 
 .sair>img {
     margin-right: 10px;
     width: 25px;
     height: auto;
+   
 }
 
 .section-englobamento {
@@ -164,10 +181,6 @@ body {
     margin: 0 auto; 
 }
 
-.botao-salvar:hover, .botao-cancelar:hover, .sair:hover{
-    transform: scale(1.20);
-    transition: transform 0.1s ease;
-}
 
 footer {
     background-color: #1490D9;
