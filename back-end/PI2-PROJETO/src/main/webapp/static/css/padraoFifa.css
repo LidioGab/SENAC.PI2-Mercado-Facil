@@ -1,0 +1,64 @@
+header {
+    background-color: #1490D9;
+    height: 80px;
+    margin-bottom: 20px;
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mercadofacil {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.mercadofacil a{
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: white;
+	transition: transform 0.3s ease;
+}
+
+.mercadofacil a:hover, .botao-salvar:hover, .botao-cancelar:hover, .sair:hover{
+	 transform: scale(1.1);
+}
+
+.mercadofacil a >img {
+    margin-right: 15px;
+    width: 30px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.sair {
+    padding: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    align-self: center;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.sair>img {
+    margin-right: 10px;
+    width: 25px;
+    height: auto;
+   
+}
+
+footer {
+    background-color: #1490D9;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
