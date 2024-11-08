@@ -1,0 +1,252 @@
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+    * {
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        font-family: 'Rubik', sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: space-between;
+    }
+
+    .cima {
+        background-color: #1490D9;
+        height: 80px;
+        margin-bottom: 20px;
+        color: white;
+        padding: 0 20px;
+        display: flex;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .mercadofacil {
+        padding: 30px;
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: 30px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .mercadofacil>img {
+        margin-right: 10px;
+        width: 30px;
+        height: auto;
+    }
+    
+    .sair {
+        padding: 30px;
+        font-weight: bold;
+        font-size: 20px;
+        align-self: center;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .sair>img {
+        margin-right: 10px;
+        width: 25px;
+        height: auto;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 800px;
+        padding: 0px 100px;
+    }
+
+    section>h1 {
+        text-align: start;
+        color: #385084;
+        font-size: 40px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+
+    .section-englobamento {
+        display: flex;
+        padding: 30px 0px;
+        justify-content: space-between;
+    }
+
+
+
+    .filtrar {
+        color: #000;
+        background-color: #F6F6F6;
+        height: 450px;
+        width: 400px;
+        border-radius: 10px;
+        margin-right: 30px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: large;
+    }
+
+
+    tr,
+    th,
+    td {
+        width: 400px;
+        height: 30px;
+        border: 1px solid #B9B9B9;
+        margin: 0px;
+        padding: 0px 20px;
+        color: black;
+    }
+
+    .table {
+        max-height: 700px;
+        height: 600px;
+        overflow-y: auto;
+        border-collapse: collapse;
+    }
+
+
+    .barra-pesquisaID {
+        padding: 15px;
+        max-width: 400px;
+        background-color: #f6f6f6;
+        display: flex;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .barra-pesquisaID>input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+
+    .barra-pesquisaID>img {
+        margin-right: 10px;
+        cursor: pointer;
+        transition: transform 0.1s ease;
+    }
+
+    .barra-pesquisaID:hover>img {
+        transform: scale(1.20);
+    }
+
+    .filtrar-visu {
+        max-width: 400px;
+        display: flex;
+        border-radius: 10px;
+    }
+
+    .filtrar-visu>img {
+        margin-right: 10px;
+    }
+
+    .barra-pesquisaDATA,
+    .barra-pesquisaFORNECEDOR,
+    .barra-pesquisaCATEGORIA {
+        padding: 5px;
+        background-color: white;
+        max-width: 300px;
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .barra-pesquisaDATA>input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+
+    .barra-pesquisaDATA>img {
+        margin-right: 20px;
+    }
+
+    .barra-pesquisaFORNECEDOR>input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+
+    .barra-pesquisaFORNECEDOR>img {
+        margin-right: 20px;
+    }
+
+    .barra-pesquisaCATEGORIA>input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+
+    .barra-pesquisaCATEGORIA>img {
+        margin-right: 20px;
+    }
+
+    .categoria-select {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 30px;
+    }
+
+    .botao-filtrar {
+        background-color: #1490D9;
+        color: white;
+        padding: 10px;
+        border: 0px;
+        border-radius: 10px;
+        max-width: 100px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Rubik', sans-serif;
+        float: right;
+        cursor: pointer;
+    }
+
+    .botao-filtrar:hover, .sair:hover{
+        transform: scale(1.20);
+        transition: transform 0.1s ease;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    thead{
+        background-color: #0000000F;
+    }
+
+
+    footer {
+        background-color: #1490D9;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .categoria-select {
+        color: gray;
+    }
+
+    .categoria-select option {
+        color: black;
+    }
+
+    .categoria-select option:disabled {
+        color: gray;
+    }
