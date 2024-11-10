@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Fácil</title>
+</head>
+<body>
+    <header class="header">
+        <div class="sessao-esquerda">
+            <img src="./img-visuestoque/store.png"  class="header-icon">
+            <span class="header-title">Mercado Fácil</span>
+        </div>
+
+        <div class="sessao-direita">
+            <a href="#"></a><span class="logout-text">Sair</span>
+            <img src="./img-visuestoque/logout.png"  class="logout-icon">
+        </div>
+    </header>
+
+
+
+    <main>
+
+
+        <section class="visualizacao">
+            
+          <div class="visu-titulo">
+            <h1>Visualização Estoque</h1>
+          </div>
+
+
+            <div class="filtro">
+               
+                                
+                <h2> <img src="./img-visuestoque/filter_alt.svg" style="margin-right: 8px;">Filtrar visualização</h2>
+                <br>
+                <form id="filterForm" onsubmit="return validateForm()">
+
+
+                <div class="campo">
+                    <img src="./img-visuestoque/person_search.svg">
+            <select id="fornecedor" name="fornecedor">
+                <option value="">Fornecedor</option>
+                <option value="fornecedor1">Fornecedor 1</option>
+                <option value="fornecedor2">Fornecedor 2</option>
+            </select>
+                </div>
+
+                <div class="campo">
+                    <img src="./img-visuestoque/category_search.svg" alt="Ícone de categoria">
+            <select id="categoria" name="categoria">
+                <option value="">Categoria</option>
+                <option value="categoria1">Categoria 1</option>
+                <option value="categoria2">Categoria 2</option>
+            </select>
+                    </div>
+
+                    <div class="campo">
+                        <img src="./img-visuestoque/check_box.png" alt="Ícone de status">
+                        <select id="status" name="status">
+                            <option value="">Status</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+
+                        <div class="campo">
+                            <img src="./img-visuestoque/apartament.png" alt="Ícone de CNPJ">
+                            <input type="text" id="email" name="email" placeholder="CNPJ">
+                        </div>
+                  
+                        <button type="button" class="botao" onclick="validateForm()">Filtrar</button>
+            </div>
+        </section> 
+
+         <section class="tabela-visualizacao">
+            <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entrada (UTC-03:00)</th>
+                        <th>Validade (UTC-03:00)</th>
+                        <th>ID Estoque</th>
+                        <th>ID Produto</th>
+                        <th>Quantidade</th>
+                        <th>Produto</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                <tr>
+                    <td>19/01/2024 | 10:45:55</td>
+                    <td>19/06/2024 | 23:59:59</td>
+                    <td>000005</td>
+                    <td>0005</td>
+                    <td>900</td>
+                    <td>Suco de Laranja - 1L</td>
+                    <td>Ativo</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </section>
+    </main>
+    <footer>
+        © 2024 Code Commiters. Todos os Direitos Reservados.
+    </footer>
+    <script src="visuestoque.js"></script>
+    </body>
+    </html>
