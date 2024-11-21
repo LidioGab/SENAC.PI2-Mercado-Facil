@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise Estoque</title>
+    <link rel="stylesheet" href="static/css/AnaliseEstoque.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="conteudo-header">
+        <img src="static/images/AnaliseEstoque/supermarket-shop-svgrepo.svg" class="img-header">
+        <h1 class="logo">Mercado Facil</h1>
+        </div>
+    </header>
+
+    <div class="texto">
+        <h1>Analise de Estoque</h1>
+    </div>
+
+    <div class="cards"> 
+        <div id="pesquisa">
+            <label for="nome">ID</label>
+            <input type="text" class="img-pesquisa" placeholder=" Pesquisar ID"name="nome" required>
+        </div>
+
+        <div class="saldo">
+            <h2> Saldo Fisico</h2>
+            <p>40.000</p>
+        </div>
+
+        <div class="valor">
+            <h2>Valor de Mercadoria em Estoque</h2>
+            <p>40.000</p>
+        </div>
+
+        <div class="receita">
+            <h2>Receita em Estoque</h2>
+            <p>40.000</p>
+        </div>
+    </div>
+
+    <section class="estatisticas">
+
+        <div class="estoque">
+            <div class="contagem-estoque">
+                <h2>Estoque Médio</h2>
+                <p>R$ 120.000,00</p>
+                <div class="variacao-estoque">
+                    <img src="static/images/AnaliseEstoque/arrow_downward_alt.svg" class="img-variação">
+                    <p>10%</p>
+                </div>
+            </div>
+            <div class="excesso-container">
+                <div class="excesso">
+                    <h2>Excesso</h2>
+                    <p>20.1%</p>
+                    <h2>24.120,00</h2>
+                </div>
+                <div class="excesso">
+                    <h2>Excesso</h2>
+                    <p>55.1%</p>
+                    <h2>66.120,00</h2>
+                </div>
+                <div class="excesso">
+                    <h2>In Loco</h2>
+                    <p>24.8%</p>
+                    <h2>29.760,00</h2>
+                </div>
+            </div>
+
+            <canvas id="grafico3" width="615" height="300" ></canvas>
+        </div>
+       
+        </div>
+    
+        <div class="colunas">
+            <div class="rotacao">
+                <div class="contagem">
+                    <h2>Rotação de Estoque</h2>
+                    <p>30 dias</p>
+                    <div class="variacao">
+                        <img src="static/images/AnaliseEstoque/arrow_downward_alt.svg" class="img-variação">
+                        <p>10%</p>
+                    </div>
+                </div>
+                <canvas id="grafico2" class="grafico"></canvas>
+            </div>
+        
+            <div class="vendas">
+                <div class="contagem">
+                    <h2>Vendas</h2>
+                    <p>R$ 30.500,00</p>
+                    <div class="variacao">
+                        <img src="static/images/AnaliseEstoque/arrow_downward_alt.svg" class="img-variação">
+                        <p>10%</p>
+                    </div>
+                </div>
+                <canvas id="grafico" class="grafico"></canvas>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Code Commiters. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+    var ctx = document.getElementById('grafico2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar', // Tipo de gráfico (pode ser 'line', 'bar', 'pie', etc.)
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Vendas',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+    <script>
+    var ctx = document.getElementById('grafico').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line', // Tipo de gráfico (pode ser 'line', 'bar', 'pie', etc.)
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Vendas',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById('grafico3').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line', // Tipo de gráfico (pode ser 'line', 'bar', 'pie', etc.)
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Vendas',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+    
+</html>

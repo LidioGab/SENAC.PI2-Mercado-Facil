@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="static/css/EditarFuncionario.css">
+	<title>Editar Funcionario</title>
+</head>
+<body>
+<header>
+	<div class="conteudo-header">
+		<img
+				src="static/images/EditarFuncionario/supermarket-shop-svgrepo-com 1.svg"
+				class="img-header">
+		<h1 class="logo">Mercado Facil</h1>
+	</div>
+</header>
+<section class="centro">
+	<div class="texto">
+		<h1>Editar Funcionario</h1>
+	</div>
+	<form class="input-section" action="/EditarFuncionario" method="POST">
+		<div class="colunas">
+			<div>
+				<div id="nome">
+					<label for="nome">Nome</label>
+					<input type="text" class="img-nome" placeholder=" Nome do usuário" name="nome" required>
+				</div>
+				<div id="email">
+					<label for="email">Email</label>
+					<input type="email" class="img-email" placeholder=" E-mail" name="email" required>
+				</div>
+				<div id="cpf">
+					<label for="cpf">CPF</label>
+					<input type="text" class="img-cpf" placeholder=" CPF" name="cpf" required>
+				</div>
+			</div>
+			<div>
+				<div id="cargo">
+					<label for="cargo">Cargo</label>
+					<select name="situacao" class="img-cargo" required>
+						<option value="" disabled selected>Selecione uma opção...</option>
+						<option value="ativo">Caixa</option>
+						<option value="inativo">Almoxarife</option>
+						<option value="suspenso">Administrador</option>
+						<option value="suspenso">Assistente de Recursos Humanos</option>
+						<option value="suspenso">Auxiliar de Manutenção</option>
+						<option value="suspenso">Gerente</option>
+					</select>
+				</div>
+				<div id="setor">
+					<label for="setor">Setor</label>
+					<select name="situacao" class="img-setor" required>
+						<option value="" disabled selected>Selecione uma opção...</option>
+						<option value="ativo">Financeiro</option>
+						<option value="inativo">Vendas</option>
+						<option value="suspenso">Logistica</option>
+						<option value="suspenso">Recursos Humanos</option>
+						<option value="suspenso">Manutenção</option>
+						<option value="suspenso">Administração</option>
+					</select>
+				</div>
+				<div id="situacao">
+					<label for="situacao">Situação</label>
+					<select name="situacao" class="img-situacao" required>
+						<option value="" disabled selected>Selecione uma opção...</option>
+						<option value="ativo">Ativo</option>
+						<option value="inativo">Inativo</option>
+						<option value="suspenso">Suspenso</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="botoes" id="botoes">
+			<button type="submit" class="salvar">Salvar</button>
+			<button type="submit" class="cancelar">Cancelar</button>
+		</div>
+	</form>
+
+
+</section>
+<footer>
+	<p>© 2024 Code Commiters. All Rights Reserved.</p>
+</footer>
+</body>
+
+</html>

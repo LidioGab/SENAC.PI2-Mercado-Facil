@@ -28,7 +28,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Recebe os parâmetros do formulário
+        // Recebe os parâmetros do formulário 
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String cpf = request.getParameter("cpf");
