@@ -1,40 +1,59 @@
-// idsFuncionarios.js
-
 // Função para buscar e exibir a lista de IDs de funcionários sem usuário
 function carregarFuncionariosSemUsuario() {
     fetch('http://localhost:8080/PI2-PROJETO/funcionariosSemUsuario')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Erro ao buscar funcionários');
             }
             return response.json();
         })
         .then(data => {
-            console.log(data);  // Verifique o que está sendo impresso no console do navegador
             const selectFuncionario = document.getElementById('idFuncionario');
-            selectFuncionario.innerHTML = ''; // Limpa as opções anteriores
-
-            // Adiciona as opções com os IDs ao <select>
+            selectFuncionario.innerHTML = '<option value="">Selecione um funcionário</option>'; // Resetar opções
             data.forEach(id => {
                 const option = document.createElement('option');
                 option.value = id;
-                option.textContent = id; // Apenas o ID
+                option.textContent = `ID: ${id}`;
                 selectFuncionario.appendChild(option);
             });
         })
         .catch(error => {
-            console.error('Erro ao buscar a lista de funcionários:', error);
-            document.getElementById('mensagem').textContent = 'Erro ao carregar funcionários.';
+            console.error('Erro ao carregar funcionários:', error);
+            const mensagem = document.getElementById('mensagem');
+            mensagem.textContent = 'Erro ao carregar funcionários.';
+            mensagem.style.color = 'red';
         });
 }
 
-// Função para lidar com o envio do formulário
-document.getElementById('formCadastroUsuario').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio do formulário padrão
+window.onload = carregarFuncionariosSemUsuario;
 
-    // Exibir uma mensagem de sucesso temporária
-    document.getElementById('mensagem').textContent = 'Usuário cadastrado com sucesso!';
+document.getElementById("formCadastroUsuario").addEventListener("submit", function(event) {
+    event.preventDefault();  // Impede o envio padrão do formulário
+
+    // Cria um objeto FormData com os dados do formulário
+    var formData = new FormData(this);
+	alert(formData)
+    // Envia os dados via POST usando a API Fetch
+    fetch("http://localhost:8080/PI2-PROJETO/cadastroUsuario", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        console.log("Response Status:", response.status);
+        console.log("Response OK:", response.ok);
+        if (response.ok) {
+            return response.text();
+        } else {
+            throw new Error("Erro no cadastro: " + response.statusText);
+        }
+    })
+    .then(data => {
+        console.log("Response Data:", data);
+        alert("Usuário cadastrado com sucesso!");
+        window.location.href = "cadastroSucesso.html";  // Redireciona para a página de sucesso
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert("Erro: " + error.message);
+    });
 });
-
-// Chama a função para carregar os IDs quando a página carregar
-window.onload = carregarFuncionariosSemUsuario; 

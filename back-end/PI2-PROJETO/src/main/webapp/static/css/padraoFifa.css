@@ -47,13 +47,14 @@ header {
     display: flex;
     align-items: center;
     transition: transform 0.3s ease;
+    cursor:pointer;
 }
 
 .sair>img {
     margin-right: 10px;
     width: 25px;
     height: auto;
-   
+	 cursor:pointer;
 }
 
 footer {

@@ -33,6 +33,13 @@ public class FuncionariosSemUsuarioServlet extends HttpServlet {
             // Obtém a lista de IDs de funcionários sem usuário
             List<Integer> funcionariosSemUsuario = usuarioDAO.listarFuncionariosSemUsuario();
 
+            if (funcionariosSemUsuario == null || funcionariosSemUsuario.isEmpty()) {
+                // Retorna erro 404 se não encontrar funcionários sem usuário
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                response.getWriter().write("{\"error\": \"Nenhum funcionário encontrado.\"}");
+                return;
+            }
+
             // Converte a lista de IDs em JSON usando Gson
             Gson gson = new Gson();
             String json = gson.toJson(funcionariosSemUsuario);
@@ -45,7 +52,15 @@ public class FuncionariosSemUsuarioServlet extends HttpServlet {
             response.getWriter().write(json);
 
         } catch (SQLException e) {
-            throw new ServletException("Erro ao conectar ao banco de dados", e);
+            // Caso ocorra um erro no banco de dados, retorna erro 500
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("{\"error\": \"Erro ao conectar ao banco de dados.\"}");
+            e.printStackTrace();
+        } catch (Exception e) {
+            // Captura qualquer outro tipo de exceção e retorna erro 500
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("{\"error\": \"Erro inesperado.\"}");
+            e.printStackTrace();
         } finally {
             // Fecha a conexão com o banco de dados
             if (connection != null) {

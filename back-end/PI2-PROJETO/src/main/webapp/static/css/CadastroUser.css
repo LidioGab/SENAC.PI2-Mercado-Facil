@@ -29,18 +29,42 @@
             background-color: #f0f0f0;
         }
 
+#mensagem{
+	padding: 0px 20px;
+}
+
+#row-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#grupo{
+	
+	
+}
+
+
+#row-button > button{
+    background-color: #1490D9;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform  0.3s ease;
+}
+
 body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-height: 100vh;
+    height: 100%;
     background-color: #ffffff;
-    height:100vh;
 }
-
-#mensagem{
-	padding:0px 20px;
-}
-
 header{
     background-color: #1490D9;
     display: flex;
@@ -95,34 +119,8 @@ form{
     margin-bottom: 30px;
 }
 
-#teste{
-    background-color: #1490D9;
-    color: white;
-    padding: 2px 20px;
-	align-self: center;
-    height:50px;
-    border: none;
-    border-radius: 15px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform  0.3s ease;
 
-}
-
-.grupo{
-	border: none; /* Remove a borda */
-	  outline: none; /* Remove o contorno */
-	  appearance: none; /* Mantém a seta padrão */
-	  padding: 5px; /* Ajusta o espaço interno */
-}
-
-#row-button{
-    justify-content: center;
-    padding: 0px 60px 0px 0px
-}
-
-#teste:hover{
+#row-button >  button:hover{
     background-color: #0f6ab4;
     transform: scale(1.05);
 }
@@ -136,9 +134,7 @@ form{
     margin-bottom: 20px;
 }
 
-.arrow-group{
-	padding: 5px 0px;
-}
+
 .column-form{
     display: flex;
     flex-direction: column;
@@ -164,7 +160,7 @@ form{
     padding: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px 50px -6px rgba(0,0,0,0.10);
-	height: 51px;
+
 }
 
 .form-input > img{

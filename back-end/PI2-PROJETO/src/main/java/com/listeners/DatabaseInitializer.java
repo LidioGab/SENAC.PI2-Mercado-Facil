@@ -3,7 +3,7 @@ package com.listeners;
 import com.gerenciador.dao.ConnectionFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener; 
+import javax.servlet.annotation.WebListener;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -28,7 +28,6 @@ public class DatabaseInitializer implements ServletContextListener {
             // Verificar se o banco de dados já existe
             stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS mercado_facil");
             LOGGER.info("Database mercado_facil created or already exists.");
-
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error creating database", e);
         }
@@ -88,31 +87,21 @@ public class DatabaseInitializer implements ServletContextListener {
 
     private void insertInitialData(Connection connection) throws SQLException {
         try (Statement statement = connection.createStatement()) {
-            // Inserir dados na tabela Grupo_Usuario
+            // Inserir dados nas tabelas sem dependência de chave estrangeira
             statement.executeUpdate("INSERT INTO Grupo_Usuario (Grupo) VALUES ('Administrador'), ('Gerente'), ('Supervisor'), ('Funcionário'), ('Estagiário')");
             LOGGER.info("Inserted data into Grupo_Usuario");
 
-            // Inserir dados na tabela Categoria_Produto
-            statement.executeUpdate("INSERT INTO Categoria_Produto (Categoria, Sub_Categoria) VALUES ('Eletrônicos', 'Celulares'), ('Alimentos', 'Bebidas'), ('Vestuário', 'Roupas')");
-            LOGGER.info("Inserted data into Categoria_Produto");
-
-            // Inserir dados na tabela Tipo_Comercio
-            statement.executeUpdate("INSERT INTO Tipo_Comercio (Tipo) VALUES ('Varejo'), ('Atacado'), ('E-commerce')");
-            LOGGER.info("Inserted data into Tipo_Comercio");
-
-            // Inserir dados na tabela Cargo_Funcionarios
             statement.executeUpdate("INSERT INTO Cargo_Funcionarios (Cargo) VALUES ('Gerente'), ('Vendedor'), ('Caixa'), ('Estoquista'), ('Assistente'), ('Supervisor'), ('Assistente Administrativo'), ('Administrador')");
             LOGGER.info("Inserted data into Cargo_Funcionarios");
 
-            // Inserir dados na tabela Setor_Funcionario
             statement.executeUpdate("INSERT INTO Setor_Funcionario (Setor) VALUES ('Vendas'), ('Financeiro'), ('Estoques'), ('Administração'), ('Marketing'), ('Recursos Humanos'), ('Logística')");
             LOGGER.info("Inserted data into Setor_Funcionario");
 
-            // Inserir dados na tabela Funcionarios
-            statement.executeUpdate("INSERT INTO Funcionarios (Nome, Sobrenome, CPF, Cargo, Setor, Situacao, Email) VALUES " +
-                    "('João', 'Silva', '123.456.789-00', 1, 1, 'Ativo', 'joao.silva@example.com')," +
-                    "('Maria', 'Oliveira', '987.654.321-00', 2, 2, 'Ativo', 'maria.oliveira@example.com')");
-            LOGGER.info("Inserted data into Funcionarios");
+            statement.executeUpdate("INSERT INTO Categoria_Produto (Categoria, Sub_Categoria) VALUES ('Eletrônicos', 'Celulares'), ('Alimentos', 'Bebidas'), ('Vestuário', 'Roupas')");
+            LOGGER.info("Inserted data into Categoria_Produto");
+
+            statement.executeUpdate("INSERT INTO Tipo_Comercio (Tipo) VALUES ('Varejo'), ('Atacado'), ('E-commerce')");
+            LOGGER.info("Inserted data into Tipo_Comercio");
 
             // Inserir dados na tabela Produto
             statement.executeUpdate("INSERT INTO Produto (Nome_Produto, Codigo_Barra, Valor_Produto, Categoria, Descricao_Produto) VALUES " +
@@ -120,10 +109,20 @@ public class DatabaseInitializer implements ServletContextListener {
                     "('Refrigerante ABC', '9876543210987', 5.00, 2, 'Refrigerante sabor cola')");
             LOGGER.info("Inserted data into Produto");
 
-            // Inserir dados na tabela Usuario_Interno
-            statement.executeUpdate("INSERT INTO Usuario_Interno (Id_Usuario, Nome, Sobrenome, Email, Senha, Situacao_Conta, Id_Grupo) VALUES " +
-                    "(1, 'João', 'Silva', 'joao.silva@example.com', 'senha123', 'Ativo', 1)");
+            statement.executeUpdate("INSERT INTO Fornecedores (Nome_Fornecedor, Tipo_Comercio, Telefone, CEP, Rua, Bairro, Estado, Pais, Responsavel, Documento, Status_Fornecedor) VALUES " +
+                    "('Fornecedor A', 1, '123456789', '12345-678', 'Rua Exemplo', 'Bairro A', 'Estado A', 'Brasil', 'João Silva', '1234567890', 'Ativo')");
+            LOGGER.info("Inserted data into Fornecedores");
+
+            // Agora inserindo nas tabelas que dependem de chave estrangeira
+            statement.executeUpdate("INSERT INTO Funcionarios (Nome, Sobrenome, CPF, Cargo, Setor, Situacao, Email) VALUES " +
+                    "('João', 'Silva', '123.456.789-00', 1, 1, 'Ativo', 'joao.silva@example.com')," +
+                    "('Maria', 'Oliveira', '987.654.321-00', 2, 2, 'Ativo', 'maria.oliveira@example.com')");
+            LOGGER.info("Inserted data into Funcionarios");
+
+            statement.executeUpdate("INSERT INTO Usuario_Interno (Nome_Usuario, Senha, Email, Id_Grupo, Id_Funcionario) VALUES " +
+                    "('admin', 'admin123', 'admin@example.com', 1, 1)");
             LOGGER.info("Inserted data into Usuario_Interno");
+
         }
     }
 

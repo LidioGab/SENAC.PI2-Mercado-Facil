@@ -1,95 +1,85 @@
 package com.model;
 
-import java.util.Date;
-
 public class Usuario {
-	private Integer id;
-	private String nome;
-	private String senha;
-	private String email;
-	private Date dataCriacao;
-    private Date ultimoAcesso;
-	private Integer idGrupo;
-	private Integer idFuncionario;
-	
-	public Usuario() {
-	}
+    private Integer id;           // Representa o Id_Usuario
+    private String nome;          // Representa o Nome_Usuario
+    private String senha;         // Representa a Senha
+    private String email;         // Representa o Email
+    private String idGrupo;       // Representa o Id_Grupo (VARCHAR na tabela)
+    private Integer idFuncionario; // Representa o Id_Funcionario
 
-	public Usuario(Integer id, String nome, String senha, String email, Date dataCriacao, Date ultimoAcesso,
-			Integer idGrupo, Integer idFuncionario) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.senha = senha;
-		this.email = email;
-		this.dataCriacao = dataCriacao;
-		this.ultimoAcesso = ultimoAcesso;
-		this.idGrupo = idGrupo;
-		this.idFuncionario = idFuncionario;
-	}
+    // Construtor vazio
+    public Usuario() {}
 
-	public Integer getId() {
-		return id;
-	}
+    // Construtor com parâmetros
+    public Usuario(Integer id, String nome, String senha, String email, String idGrupo, Integer idFuncionario) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.email = email;
+        this.idGrupo = idGrupo;
+        this.idFuncionario = idFuncionario;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    // Getters e Setters
+    public Integer getId() {
+        return id;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getSenha() {
-		return senha;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Date getDataCriacao() {
-		return dataCriacao;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
+    public String getIdGrupo() {
+        return idGrupo;
+    }
 
-	public Integer getIdGrupo() {
-		return idGrupo;
-	}
+    public void setIdGrupo(String idGrupo) {
+        this.idGrupo = idGrupo;
+    }
 
-	public void setIdGrupo(Integer idGrupo) {
-		this.idGrupo = idGrupo;
-	}
+    public Integer getIdFuncionario() {
+        return idFuncionario;
+    }
 
-	public Integer getIdFuncionario() {
-		return idFuncionario;
-	}
+    public void setIdFuncionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
-	public void setIdFuncionario(Integer idFuncionario) {
-		this.idFuncionario = idFuncionario;
-	}
-
-	public Date getUltimoAcesso() {
-		return ultimoAcesso;
-	}
-
-	public void setUltimoAcesso(Date ultimoAcesso) {
-		this.ultimoAcesso = ultimoAcesso;
-	}
-	
+    // Método toString para facilitar a visualização dos dados do objeto
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", senha='" + senha + '\'' +
+                ", email='" + email + '\'' +
+                ", idGrupo='" + idGrupo + '\'' +
+                ", idFuncionario=" + idFuncionario +
+                '}';
+    }
 }

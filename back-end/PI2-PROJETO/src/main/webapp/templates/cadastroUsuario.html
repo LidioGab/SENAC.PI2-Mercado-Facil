@@ -1,109 +1,181 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Criar Conta</title>
-        <link rel="stylesheet" href="static/css/cadastroUser.css">
-        <link rel="stylesheet" href="static/css/padraoFifa.css">
-    </head>
-    <body>
-    <header>
-        <div class="mercadofacil">
-        	<a href = "./dashboard">
-        	<img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
-        	Mercado Fácil
-        	</a>
-            
-        </div>
-        <div class="sair">
-            
-            <p>Sair</p>
-           	<img src="static/images/edicaoUsuario/sair.svg" alt="">
-            
-            
-        </div>
-    </header>
-        <section>
-            <main>
-                <h1>Criar Usuário</h1>
-                <form id="formCadastroUsuario"> <!-- Adicionei o id ao formulário -->
-                    <div class="row-form">
-                        <div class="column-form">
-                            <label for="nome">Nome:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/person.svg">
-                                <input type="text" id="nome" name="nome" placeholder="Nome e Sobrenome">
-                            </div>
-                        </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criar Conta</title>
+<link rel="stylesheet" href="static/css/CadastroUser.css">
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+</head>
+<body class="teste" style="height: 100vh;">
+	<header>
+		<div class="mercadofacil">
+			<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg"
+				alt="Logo Mercado Fácil"> Mercado Fácil
+			</a>
+		</div>
+		<div class="sair">
+			<p>Sair</p>
+			<img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
+		</div>
+	</header>
+	<section>
+		<main>
+			<h1>Criar Usuário</h1>
+			<form id="formCadastroUsuario" action="/PI2-PROJETO/cadastroUsuario"
+				method="POST">
+				<div class="row-form">
+					<div class="column-form">
+						<label for="nome">Nome:</label>
+						<div class="form-input">
+							<img src="static/images/cadastroUsuario/person.svg"
+								alt="Ícone de pessoa"> <input type="text" id="nome"
+								name="nome" placeholder="Nome e Sobrenome" required>
+						</div>
+					</div>
+					<div class="column-form">
+						<label for="senha">Senha:</label>
+						<div class="form-input">
+							<img src="static/images/cadastroUsuario/lock.svg"
+								alt="Ícone de cadeado"> <input type="password" id="senha"
+								name="senha" placeholder="Pelo menos 6 caracteres" minlength="6"
+								required>
+						</div>
+					</div>
+				</div>
+				<div class="row-form">
+					<div class="column-form">
+						<label for="email">Email:</label>
+						<div class="form-input">
+							<img src="static/images/cadastroUsuario/mail.svg"
+								alt="Ícone de email"> <input type="email" id="email"
+								name="email" placeholder="email@gmail.com" required>
+						</div>
+					</div>
+					<div class="column-form">
+						<label for="idFuncionario">ID Funcionário:</label>
+						<div class="form-input">
+							<img src="static/images/cadastroUsuario/id_card.svg"
+								alt="Ícone de ID"> <select id="idFuncionario"
+								name="idFuncionario" required>
+								<option value="">Selecione um funcionário</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row-form">
+					<div class="column-form">
+						<label for="grupo">Grupo:</label>
+						<div class="form-input">
+							<img src="static/images/cadastroUsuario/medical_information.svg"
+								alt="Ícone de grupo"> <select id="grupo" name="grupo"
+								required>
+								<option value="">Selecione um grupo</option>
+								<option value="cliente">Cliente</option>
+								<option value="fornecedor">Fornecedor</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row-form" id="row-button">
+					<button type="button" id="teste" onclick="submitForm()">Cadastrar
+						Usuário</button>
+				</div>
+			</form>
+			<div id="mensagem"></div>
+		</main>
+	</section>
+	<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
 
-                        <div class="column-form">
-                            <label for="senha">Senha:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/lock.svg">
-                                <input type="password" id="senha" name="senha" placeholder="Pelo menos 6 caracteres">
-                            </div>
-                        </div>
-                    </div>
+	<script>
+    function carregarFuncionariosSemUsuario() {
+        fetch('http://localhost:8080/PI2-PROJETO/funcionariosSemUsuario')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar funcionários. Verifique se existe funcionarios cadastrados');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const selectFuncionario = document.getElementById('idFuncionario');
+                selectFuncionario.innerHTML = '<option value="">Selecione um funcionário</option>'; // Resetar opções
+                data.forEach(id => {
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.textContent = `ID: ${id}`;
+                    selectFuncionario.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar funcionários:', error);
+                const mensagem = document.getElementById('mensagem');
+                mensagem.textContent = 'Erro ao carregar funcionários. Verifique se existe funcionarios cadastrados';
+                mensagem.style.color = 'red';
+            });
+    }
 
-                    <div class="row-form">
-                        <div class="column-form">
-                            <label for="email">Email:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/mail.svg">
-                                <input type="email" id="email" name="email" placeholder="email@gmail.com">
-                            </div>
-                        </div>
+    window.onload = carregarFuncionariosSemUsuario;
 
-                        <div class="column-form">
-                            <label for="senhaConfirm">Confirme a Senha:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/lock.svg">
-                                <input type="password" id="senhaConfirm" name="senhaConfirm" placeholder="Repita os caracteres">
-                            </div>
-                        </div>
-                    </div>
+    // Função para enviar o formulário
+    function submitForm() {
+        // Captura os dados do formulário
+        const nome = document.getElementById('nome').value;
+        const senha = document.getElementById('senha').value;
+        const email = document.getElementById('email').value;
+        const idFuncionario = document.getElementById('idFuncionario').value;
 
-                    <div class="row-form">
-                        <div class="column-form">
-                            <label for="cpf">CPF:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/id_card.svg">
-                                <input type="text" id="cpf" name="cpf" placeholder="888.888.888-12">
-                            </div>
-                        </div>
+        // Obtém o valor do grupo e ajusta para 1 ou 2
+        const grupoSelecionado = document.getElementById('grupo').value;
+        let grupo;
+        if (grupoSelecionado === "cliente") {
+            grupo = 1;
+        } else if (grupoSelecionado === "fornecedor") {
+            grupo = 2;
+        } else {
+            alert("Selecione um grupo válido.");
+            return;
+        }
 
-                        <div class="column-form">
-                            <label for="idFuncionario">ID Funcionário:</label>
-                            <div class="form-input">
-                                <img src="static/images/cadastroUsuario/id_card.svg">
-                                <!-- Removido input, apenas o select -->
-                                <select id="idFuncionario" name="idFuncionario">
-                                    <option value="">Selecione um funcionário</option>
-                                    <!-- As opções serão preenchidas pelo JavaScript -->
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="column-form">
-                        <label for="grupo">Grupo:</label>
-                        <div class="form-input">
-                            <img src="static/images/cadastroUsuario/work.svg">
-                            <select name="grupo" id="grupo">
-                                <option value="cliente">Cliente</option>
-                                <option value="fornecedor">Fornecedor</option>
-                            </select>
-                        </div>  
-                    </div>
-                    <button type="submit">Cadastrar Usuário</button>
-                </form>
-                <div id="mensagem"></div> <!-- Adicionei para exibir mensagens -->
-            </main>
-        </section>
+        // Verifica se os campos obrigatórios estão preenchidos
+        if (!nome || !senha || !email || !idFuncionario || !grupoSelecionado) {
+            alert("Todos os campos devem ser preenchidos.");
+            return;
+        }
 
-    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+        // Cria o objeto JSON
+        const data = {
+            nome: nome,
+            senha: senha,
+            email: email,
+            idFuncionario: idFuncionario,
+            grupo: grupo
+        };
 
-
-        <script src="static/js/idsFuncionarios.js"></script>
-    </body>
+        // Envia os dados via POST usando a API Fetch
+        fetch("/PI2-PROJETO/cadastroUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error("Erro no cadastro: " + response.statusText);
+            }
+        })
+        .then(data => {
+            alert("Usuário cadastrado com sucesso!");
+            window.location.href = "cadastroSucesso.html";
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert("Erro ao cadastrar usuário: " + error.message);
+        });
+    }
+</script>
+</body>
 </html>
