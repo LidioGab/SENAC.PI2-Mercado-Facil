@@ -6,3 +6,4 @@ Server/
 *.settings/
 *.classpath
 /build/
+/bin/
