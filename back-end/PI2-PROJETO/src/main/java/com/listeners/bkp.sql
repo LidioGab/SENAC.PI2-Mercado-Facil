@@ -1,4 +1,4 @@
-
+DROP database IF EXISTS `mercado_facil`;
 CREATE DATABASE IF NOT EXISTS `mercado_facil`
     DEFAULT CHARACTER SET utf8mb4
     COLLATE utf8mb4_general_ci;
