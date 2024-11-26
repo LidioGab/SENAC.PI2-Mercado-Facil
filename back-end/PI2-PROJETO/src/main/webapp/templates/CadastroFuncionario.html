@@ -1,102 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/CadastroFuncionario.css"/>
-        <link rel="stylesheet" href="static/css/padraoFifa.css">
-    <title>Mercado Fácil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+	rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" 
+	href="static/css/CadastroFuncionario.css" />
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+<title>Mercado Fácil</title>
 </head>
 <body>
-    <header>
-        <div class="mercadofacil">
-        	<a href = "./dashboard">
-        	<img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
-        	Mercado Fácil
-        	</a>
-            
+	<header>
+		<div class="mercadofacil">
+			<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+				Mercado Fácil
+			</a>
+
+		</div>
+		        <div class="sair">
+        <p>
+<a href="./logout" class="logout-link">
+Sair
+    <img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
+</a>
+</p>
         </div>
-        <div class="sair">
-            
-            <p>Sair</p>
-           	<img src="static/images/edicaoUsuario/sair.svg" alt="">
-            
-            
-        </div>
-    </header>
+	</header>
 
-    <div class="container">
-        <div class="opcoes"> 
+	<div class="container">
+		<div class="opcoes">
 
-            <h2>Cadastro de Funcionário</h2>
+			<h2>Cadastro de Funcionário</h2>
 
-            <div class= "grid">
+			<div class="grid">
 
-            <div class="alinha">
-                <h4>Nome </h4>
-                <div class="input-wrapper">
-                    <img src="static/images/CadastroFuncionario/person.png" alt="person-icon">
-                    <input type="text" id="nome" name="Nome" placeholder="Nome" required>
-                </div>
-            </div>
+				<div class="alinha">
+					<h4>Nome</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/person.png"
+							alt="person-icon"> <input type="text" id="nome" name="Nome"
+							placeholder="Nome" required>
+					</div>
+				</div>
 
-            <div class="alinha">
-                <h4>E-mail </h4>
-                <div class="input-wrapper">
-                    <img src="static/images/CadastroFuncionario/mail.png" alt="person-icon">
-                    <input type="email" id="E-mail" name="E-mail" placeholder="Email" required>
-                </div>
-            </div>
+				<div class="alinha">
+					<h4>E-mail</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/mail.png"
+							alt="person-icon"> <input type="email" id="email"
+							name="E-mail" placeholder="Email" required>
+					</div>
+				</div>
 
-            <div class="alinha">
-                <h4>Cargo</h4>
-                <div class="input-wrapper">
-                    <img src="static/images/CadastroFuncionario/work.png" alt="id">
-                    <select id="cargo" name="cargo"  list="status" required>
-                        <option value=""disabled selected hidden>Selecione uma opção...</option>
-                        <option value="">Coordenador</option>
-                        <option value="">Segurança</option>
-                        <option value="">Estoquista</option>
-                        <option value="">Vendedor</option>
-                        <option value="">Limpeza</option>
-                    </select>
-                </div>
-            </div>
+				<div class="alinha">
+					<h4>Cargo</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/work.png" alt="id">
+						<select id="cargo" name="cargo" list="status" required>
+							<option value="" disabled selected hidden>Selecione uma
+								opção...</option>
+							<option value=1>Gerente</option>
+							<option value=2>Vendedor</option>
+							<option value=3>Caixa</option>
+							<option value=4>Estoquista</option>
+							<option value=5>Assistente</option>
+							<option value=6>Supervisor</option>
+							<option value=7>Assistente Administrativo</option>
+							<option value=8>Administrador</option>
+						</select>
+					</div>
+				</div>
 
-            <div class="alinha">
-                <h4>CPF</h4>
-                <div class="input-wrapper">
-                    <img src="static/images/CadastroFuncionario/id_card.png" alt="person-icon">
-                    <input type="text" id="CPF" name="CPF"  placeholder="CPF" required>
-                </div>
-            </div>
-
-
-
-            <div class="alinha">
-                <h4>Situação</h4>
-                <div class="input-wrapper">
-                    <img src="static/images/CadastroFuncionario/situacao.png" alt="situacao">
-                    <select id="situacao" name="situacao"  list="status" required>
-                        <option value=""disabled selected hidden>Selecione uma opção...</option>
-                        <option value="">Ativo</option>
-                        <option value="">Inativo</option>
-                    </select>
-                </div>
-            </div>
-            
-            </div>
-            <button class="botao" >Cadastrar</button>
-        </div> 
-    </div>
+				<div class="alinha">
+					<h4>CPF</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/id_card.png"
+							alt="person-icon"> <input type="text" id="CPF" name="CPF"
+							placeholder="CPF" required>
+					</div>
+				</div>
 
 
-    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
 
-    
-    <script src="javajsc.js"></script>
+				<div class="alinha">
+					<h4>Situação</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/situacao.png"
+							alt="situacao"> <select id="situacao" name="situacao"
+							list="status" required>
+							<option value="" disabled selected hidden>Selecione uma
+								opção...</option>
+							<option value=1>Ativo</option>
+							<option value=0>Inativo</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="alinha">
+					<h4>Setor</h4>
+					<div class="input-wrapper">
+						<img src="static/images/CadastroFuncionario/situacao.png"
+							alt="setor"> <select id="setor" name="situacao"
+							list="status" required>
+							<option value="" disabled selected hidden>Selecione uma
+								opção...</option>
+									<option value=1>Vendas</option>
+									<option value=2>Financeiro</option>
+									<option value=3>Estoques</option>
+									<option value=4>Administração</option>
+									<option value=5>Marketing</option>
+									<option value=6>Recursos Humanos</option>
+									<option value=7>Logística</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+			<button class="botao" onclick="Cadastrar()">Cadastrar</button>
+		</div>
+	</div>
+
+
+	<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+
+	<script>
+		document.getElementById('CPF').addEventListener('input', function(e) {
+			var value = e.target.value;
+			var CPFPattern = value.replace(/\D/g, '') // Remove qualquer coisa que não seja número
+			.replace(/(\d{3})(\d)/, '$1.$2') // Adiciona ponto após o terceiro dígito
+			.replace(/(\d{3})(\d)/, '$1.$2') // Adiciona ponto após o sexto dígito
+			.replace(/(\d{3})(\d)/, '$1-$2') // Adiciona traço após o nono dígito
+			.replace(/(-\d{2})\d+?$/, '$1'); // Impede entrada de mais de 11 dígitos
+			e.target.value = CPFPattern;
+		});
+
+		document.getElementById('opcaoInput').addEventListener('keydown',
+				function(e) {
+					if (e.key !== "Tab" && e.key !== "ArrowDown") {
+						e.preventDefault();
+					}
+				});
+
+		function Cadastrar() {
+			const nome = document.getElementById('nome').value;
+			const cpf = document.getElementById('CPF').value;
+			const cargo = document.getElementById('cargo').value
+			const setor = document.getElementById('setor').value
+			const situacao = document.getElementById('situacao').value
+			const email = document.getElementById('email').value
+			
+			if(nome == null || nome == '' || cpf == null || cpf == '' || cargo == null || cargo == '' || setor == null || setor == '' || situacao == null || situacao == '' || email == null || email == ''){
+				alert('informe todos os campos nescessarios')
+				return
+			}
+			
+			const data ={
+				nome: nome,
+				cpf: cpf,
+				cargo: cargo,
+				setor: setor,
+				situacao: situacao,
+				email: email
+			}
+			
+			console.log(email)
+			
+			
+			fetch('http://localhost:8080/PI2-PROJETO/CadastroFuncionario',{
+				method: "POST",
+	            headers: {
+	                "Content-Type": "application/json"
+	            },
+	            body: JSON.stringify(data)
+				
+			})
+			
+			.then(data =>{
+				alert("Usuário cadastrado com sucesso!");
+			}).catch(error => {
+				console.error('Erro:', error);
+			})
+		}
+	</script>
 </body>
 </html>

@@ -3,41 +3,22 @@ package com.model;
 public class Funcionario {
 	private int id;
 	private String nome;
-	private String sobrenome;
 	private String email;
 	private String cpf;
 	private String situacao;
-	private String cargo;
-	private String setor;
+	private int cargo;
+	private int setor;
 
-	public Funcionario(int id, String nome, String sobrenome, String email, String cpf, String situacao, String cargo,
-			String setor) {
+	public Funcionario(int id, String nome, String email, String cpf, String situacao, int cargo,
+			int setor) {
 		this.id = id;
 		this.nome = nome;
-		this.sobrenome = sobrenome;
 		this.email = email;
 		this.cpf = cpf;
 		this.situacao = situacao;
 		this.cargo = cargo;
 		this.setor = setor;
 	}
-
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		String[] partes = getNome().split(" ");
-		String sb = "";
-
-		for (int i = 1; i < partes.length; i++) {
-			sb = sb.concat(partes[i] + " ");
-		}
-
-		this.sobrenome = sb;
-
-	}
-
 	public Funcionario() {
 	}
 
@@ -81,19 +62,19 @@ public class Funcionario {
 		this.situacao = situacao;
 	}
 
-	public String getCargo() {
+	public int getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
+	public void setCargo(int cargo) {
 		this.cargo = cargo;
 	}
 
-	public String getSetor() {
+	public int getSetor() {
 		return setor;
 	}
 
-	public void setSetor(String setor) {
+	public void setSetor(int setor) {
 		this.setor = setor;
 	}
 

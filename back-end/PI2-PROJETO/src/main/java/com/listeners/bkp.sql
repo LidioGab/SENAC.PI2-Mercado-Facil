@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS `mercado_facil`
     DEFAULT CHARACTER SET utf8mb4
     COLLATE utf8mb4_general_ci;
@@ -34,7 +35,6 @@ DROP TABLE IF EXISTS `Produto`;
 CREATE TABLE `Produto` (
   `Id_Produto` INT NOT NULL AUTO_INCREMENT,
   `Nome_Produto` VARCHAR(150) NOT NULL,
-  `Codigo_Barra` VARCHAR(50) NOT NULL,
   `Valor_Produto` DECIMAL(10,2) UNSIGNED NOT NULL,
   `Categoria` SMALLINT NOT NULL,
   `Descricao_Produto` VARCHAR(100) NOT NULL,
@@ -79,19 +79,18 @@ CREATE TABLE `Fornecedores` (
 
 -- Tabela Funcionarios
 DROP TABLE IF EXISTS `Funcionarios`;
-CREATE TABLE `Funcionarios` (
-  `Id_Funcionario` INT NOT NULL AUTO_INCREMENT,
-  `Nome` VARCHAR(100) NOT NULL,
-  `Sobrenome` VARCHAR(100) NOT NULL,
-  `CPF` VARCHAR(14) NOT NULL,
-  `Cargo` SMALLINT NOT NULL,
-  `Setor` SMALLINT NOT NULL,
-  `Situacao` ENUM('Ativo', 'Inativo') NOT NULL,
-  `Email` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`Id_Funcionario`),
-  FOREIGN KEY (`Cargo`) REFERENCES Cargo_Funcionarios (`Id_Cargo`),
-  FOREIGN KEY (`Setor`) REFERENCES Setor_Funcionario (`Id_Setor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+	CREATE TABLE `Funcionarios` (
+	  `Id_Funcionario` INT NOT NULL AUTO_INCREMENT,
+	  `Nome` VARCHAR(100) NOT NULL,
+	  `CPF` VARCHAR(14) NOT NULL,
+	  `Cargo` SMALLINT NOT NULL,
+	  `Setor` SMALLINT NOT NULL,
+	  `Situacao` ENUM('Ativo', 'Inativo') NOT NULL,
+	  `Email` VARCHAR(100) NOT NULL,
+	  PRIMARY KEY (`Id_Funcionario`),
+	  FOREIGN KEY (`Cargo`) REFERENCES Cargo_Funcionarios (`Id_Cargo`),
+	  FOREIGN KEY (`Setor`) REFERENCES Setor_Funcionario (`Id_Setor`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabela Usuario_Interno
 DROP TABLE IF EXISTS `Usuario_Interno`;

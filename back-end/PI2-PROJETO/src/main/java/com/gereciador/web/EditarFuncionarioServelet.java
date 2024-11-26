@@ -44,14 +44,13 @@ public class EditarFuncionarioServelet extends HttpServlet {
 
 			// Cria um objeto Funcionario
 			Funcionario funcionario = new Funcionario();
-			funcionario.setNome(nome);
-			funcionario.setCpf(cpf);
-			funcionario.setSobrenome(sobrenome);
-			funcionario.setSituacao(situacao);
-			funcionario.setCargo(cargo);
-			funcionario.setEmail(email);
-			funcionario.setSetor(setor);
-			
+//			funcionario.setNome(nome);
+//			funcionario.setCpf(cpf);
+//			funcionario.setSituacao(situacao);
+//			funcionario.setCargo(cargo);
+//			funcionario.setEmail(email);
+//			funcionario.setSetor(setor);
+//			
 
 			funcionarioDAO.atualizar(funcionario);
 

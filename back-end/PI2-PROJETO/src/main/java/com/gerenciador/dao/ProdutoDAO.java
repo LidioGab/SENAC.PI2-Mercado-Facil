@@ -22,7 +22,6 @@ public class ProdutoDAO {
                     return new Produto(
                         rs.getInt("Id_Produto"),
                         rs.getString("Nome_Produto"),
-                        rs.getInt("Codigo_Barra"),
                         rs.getDouble("Valor_Produto"),
                         rs.getInt("Categoria"),
                         rs.getString("Descricao_Produto")
@@ -35,16 +34,13 @@ public class ProdutoDAO {
 
     // INSERIR PRODUTO
     public void inserir(Produto produto) throws SQLException {
-        String sql = "INSERT INTO produto (Id_Produto, Nome_Produto, Codigo_Barra, Valor_Produto, Categoria, Descricao_Produto) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto (Nome_Produto, Valor_Produto, Categoria, Descricao_Produto) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, produto.getIdProduto());
-            stmt.setString(2, produto.getNome());
-            stmt.setInt(3, produto.getCodigoBarra());
-            stmt.setDouble(4, produto.getValorProduto());
-            stmt.setInt(5, produto.getCategoria());
-            stmt.setString(6, produto.getDescricaoProduto());
-
+            stmt.setString(1, produto.getNome());
+            stmt.setDouble(2, produto.getValorProduto());
+            stmt.setInt(3, produto.getCategoria());
+            stmt.setString(4, produto.getDescricaoProduto());
             stmt.executeUpdate();
         }
     }
@@ -54,7 +50,6 @@ public class ProdutoDAO {
         String sql = "UPDATE produto SET Nome_Produto = ?, Codigo_Barra = ?, Valor_Produto = ?, Categoria = ?, Descricao_Produto = ? WHERE Id_Produto = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
-            stmt.setInt(2, produto.getCodigoBarra());
             stmt.setDouble(3, produto.getValorProduto());
             stmt.setInt(4, produto.getCategoria());
             stmt.setString(5, produto.getDescricaoProduto());
@@ -83,7 +78,6 @@ public class ProdutoDAO {
                 Produto produto = new Produto(
                     rs.getInt("Id_Produto"),
                     rs.getString("Nome_Produto"),
-                    rs.getInt("Codigo_Barra"),
                     rs.getDouble("Valor_Produto"),
                     rs.getInt("Categoria"),
                     rs.getString("Descricao_Produto")

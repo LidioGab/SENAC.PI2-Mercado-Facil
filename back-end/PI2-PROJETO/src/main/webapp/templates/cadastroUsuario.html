@@ -15,10 +15,14 @@
 				alt="Logo Mercado Fácil"> Mercado Fácil
 			</a>
 		</div>
-		<div class="sair">
-			<p>Sair</p>
-			<img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
-		</div>
+        <div class="sair">
+        <p>
+<a href="./logout" class="logout-link">
+Sair
+    <img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
+</a>
+</p>
+        </div>
 	</header>
 	<section>
 		<main>
@@ -39,7 +43,7 @@
 						<div class="form-input">
 							<img src="static/images/cadastroUsuario/lock.svg"
 								alt="Ícone de cadeado"> <input type="password" id="senha"
-								name="senha" placeholder="Pelo menos 6 caracteres" minlength="6"
+								name="senha" placeholder="Pelo menos 6 caracteres"
 								required>
 						</div>
 					</div>
@@ -160,16 +164,8 @@
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (response.ok) {
-                return response.text();
-            } else {
-                throw new Error("Erro no cadastro: " + response.statusText);
-            }
-        })
         .then(data => {
             alert("Usuário cadastrado com sucesso!");
-            window.location.href = "cadastroSucesso.html";
         })
         .catch(error => {
             console.error('Erro:', error);

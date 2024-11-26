@@ -3,18 +3,15 @@ package com.model;
 public class Produto {
     private int idProduto;
     private String nome;
-    private int codigoBarra;
     private double valorProduto;  
     private int categoria;
     private String descricaoProduto;
 
-    public Produto() {
-    }
+    public Produto() {}
 
-    public Produto(int idProduto, String nome, int codigoBarra, double valorProduto, int categoria, String descricaoProduto) {
+    public Produto(int idProduto, String nome, double valorProduto, int categoria, String descricaoProduto) {
         this.idProduto = idProduto;
         this.nome = nome;
-        this.codigoBarra = codigoBarra;
         this.valorProduto = valorProduto;
         this.categoria = categoria;
         this.descricaoProduto = descricaoProduto;
@@ -35,14 +32,6 @@ public class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getCodigoBarra() {
-        return codigoBarra;
-    }
-
-    public void setCodigoBarra(int codigoBarra) {
-        this.codigoBarra = codigoBarra;
     }
 
     public double getValorProduto() {

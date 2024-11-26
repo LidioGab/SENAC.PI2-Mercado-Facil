@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadastro de Produto</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+	height:100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.card {
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	width: 400px;
+}
+
+.card h2 {
+	text-align: center;
+	color: #003366;
+	margin-bottom: 20px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-group label {
+	display: block;
+	font-weight: bold;
+	color: #666;
+	margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.btn {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 10px;
+	width: 100%;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #0056b3;
+}
+
+header {
+	background-color: #1490D9;
+	height: 80px;
+	margin-bottom: 20px;
+	color: white;
+	padding: 0 20px;
+	display: flex;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mercadofacil {
+	padding: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	margin-left: 30px;
+	display: flex;
+	align-items: center;
+}
+
+.mercadofacil a {
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: white;
+	transition: transform 0.3s ease;
+}
+
+.mercadofacil a:hover, .botao-salvar:hover, .botao-cancelar:hover, .sair:hover
+	{
+	transform: scale(1.1);
+}
+
+.mercadofacil a>img {
+	margin-right: 15px;
+	width: 30px;
+	height: auto;
+	display: flex;
+	align-items: center;
+}
+
+.sair {
+	padding: 30px;
+	font-weight: bold;
+	font-size: 20px;
+	align-self: center;
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	transition: transform 0.3s ease;
+	cursor: pointer;
+}
+
+.sair>img {
+	margin-right: 10px;
+	width: 25px;
+	height: auto;
+	cursor: pointer;
+}
+
+footer {
+	background-color: #1490D9;
+	color: white;
+	text-align: center;
+	padding: 20px;
+}
+
+.container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+</style>
+</head>
+<body>
+	<header>
+		<div class="mercadofacil">
+			<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+				Mercado Fácil
+			</a>
+
+		</div>
+		<div class="sair">
+
+			<p>Sair</p>
+			<img src="static/images/edicaoUsuario/sair.svg" alt="">
+
+
+		</div>
+	</header>
+	<div class="container">
+		<div class="card">
+			<h2>Cadastro de Produto</h2>
+			<form id="product-form">
+				<div class="form-group">
+					<label for="nome">Nome do Produto</label> <input type="text"
+						id="nome" name="nome" required>
+				</div>
+				<div class="form-group">
+					<label for="descricao">Descrição</label> <input type="text"
+						id="descricao" name="descricao" required>
+				</div>
+				<div class="form-group">
+					<label for="valor">Valor</label> <input type="number" id="valor"
+						name="valor" required>
+				</div>
+				<div class="form-group">
+					<label for="categoria">Categoria</label> <select id="categoria"
+						name="categoria" required>
+						<option value="">Selecione uma categoria</option>
+						<option value=1>Eletrônicos</option>
+						<option value=2>Alimentos</option>
+						<option value=3>Bebidas</option>
+						<option value=4>Hortifruti</option>
+						<option value=5>Carnes e Peixes</option>
+						<option value=6>Higiene Pessoal</option>
+						<option value=7>Limpeza</option>
+						<option value=8>Pet Shop</option>
+						<option value=9>Padaria</option>
+						<option value=10>Congelados</option>
+						<option value=11>Bazar</option>
+					</select>
+				</div>
+				<button type="button" onclick="cadastrarProd(event)" class="btn">Cadastrar
+					Produto</button>
+			</form>
+		</div>
+	</div>
+	<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+	<script>
+    function cadastrarProd(event) {
+      event.preventDefault(); // Impede o comportamento padrão de envio do formulário
+
+      const nome = document.getElementById('nome').value;
+      const descricao = document.getElementById('descricao').value;
+      const valor = document.getElementById('valor').value;
+      const categoria = document.getElementById('categoria').value;
+
+      const data = {
+        "nome": nome,
+        "descricao": descricao,
+        "valor": valor,
+        "categoria": categoria
+      };
+
+      fetch('http://localhost:8080/PI2-PROJETO/cadastrarProduto', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }).then(data => {
+        alert("Produto cadastrado com sucesso!");
+      }).catch(error => {
+        console.error('Erro:', error);
+      });
+    }
+  </script>
+</body>
+</html>
