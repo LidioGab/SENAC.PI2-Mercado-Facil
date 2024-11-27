@@ -39,11 +39,11 @@ public class UsuarioDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Usuario(
-                        rs.getInt("Id_Usuario"),
+                        rs.getString("Id_Grupo"),
                         rs.getString("Nome_Usuario"),
                         rs.getString("Senha"),
                         rs.getString("Email"),
-                        rs.getString("Id_Grupo"),
+                        rs.getInt("Id_Usuario"),
                         rs.getInt("Id_Funcionario")
                     );
                 }
@@ -66,7 +66,7 @@ public class UsuarioDAO {
         }
     }
 
-    // Método para buscar um usuário por ID
+    
     public Usuario buscarPorId(int id) throws SQLException {
         String sql = "SELECT * FROM Usuario_Interno WHERE Id_Usuario = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -74,12 +74,11 @@ public class UsuarioDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Usuario(
-                        rs.getInt("Id_Usuario"),
                         rs.getString("Nome_Usuario"),
                         rs.getString("Senha"),
                         rs.getString("Email"),
                         rs.getString("Id_Grupo"),
-                        rs.getInt("Id_Funcionario")
+                        rs.getInt("Id_Usuario")
                     );
                 }
             }
@@ -87,17 +86,15 @@ public class UsuarioDAO {
         return null;
     }
 
-    // Método para atualizar um usuário existente
+
     public void atualizar(Usuario usuario) throws SQLException {
-        String sql = "UPDATE Usuario_Interno SET Nome_Usuario = ?, Senha = ?, Email = ?, Id_Grupo = ?, Id_Funcionario = ? " +
-                     "WHERE Id_Usuario = ?";
+        String sql = "UPDATE Usuario_Interno SET Nome_Usuario = ?, Senha = ?, Email = ? " +
+                "WHERE Id_Usuario = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getSenha());
             stmt.setString(3, usuario.getEmail());
-            stmt.setString(4, usuario.getIdGrupo());
-            stmt.setInt(5, usuario.getIdFuncionario());
-            stmt.setInt(6, usuario.getId());
+            stmt.setInt(4, usuario.getIdUsuario());
             stmt.executeUpdate();
         }
     }
@@ -120,12 +117,11 @@ public class UsuarioDAO {
 
             while (rs.next()) {
                 Usuario usuario = new Usuario(
-                    rs.getInt("Id_Usuario"),
                     rs.getString("Nome_Usuario"),
                     rs.getString("Senha"),
                     rs.getString("Email"),
                     rs.getString("Id_Grupo"),
-                    rs.getInt("Id_Funcionario")
+                    rs.getInt("Id_Usuario")
                 );
                 usuarios.add(usuario);
             }

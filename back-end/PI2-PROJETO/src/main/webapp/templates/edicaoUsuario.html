@@ -1,85 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edição Usuário</title>
-    <link rel="stylesheet" href="static/css/edicaoUsuario.css">
-    <link rel="stylesheet" href="static/css/padraoFifa.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edição Usuário</title>
+	<link rel="stylesheet" href="static/css/edicaoUsuario.css">
+	<link rel="stylesheet" href="static/css/padraoFifa.css">
 </head>
-
 <body>
-    <header>
-        <div class="mercadofacil">
-        	<a href = "./dashboard">
-        	<img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
-        	Mercado Fácil
-        	</a>
-            
-        </div>
-        <div class="sair">
-            
-            <p>Sair</p>
-           	<img src="static/images/edicaoUsuario/sair.svg" alt="">
-            
-            
-        </div>
-    </header>
+<header>
+	<div class="mercadofacil">
+		<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg"
+				alt="Logo Mercado Fácil"> Mercado Fácil
+		</a>
+	</div>
+	<div class="sair">
+		<p>Sair</p>
+		<img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
+	</div>
+</header>
+<section>
+	<div class="section-englobamento">
+		<div class="editar-usuario">
+			<h1>Editar Usuário</h1>
 
-    <section>
-        <div class="section-englobamento">
-            <div class="editar-usuario">
+			<form id="formEdicaoUsuario" action="/PI2-PROJETO/edicaoUsuario" method="POST" onsubmit="atualizar(event)">
+				<div class="colunas">
+					<div class="barra-ID">
+						<img src="static/images/cadastroUsuario/id_card.svg" alt="ID">
+						<input type="text" placeholder="ID" name="idUsuario" required oninput="buscarDadosUsuario()">
+					</div>
+					<div class="barra-NOME">
+						<img src="static/images/edicaoUsuario/simbolo_pessoa.svg" alt="Nome">
+						<input type="text" placeholder="Nome" name="nome">
+					</div>
+					<div class="barra-EMAIL">
+						<img src="static/images/edicaoUsuario/email.svg" alt="Email">
+						<input type="email" placeholder="E-mail" name="email">
+					</div>
+					<div class="barra-SENHA">
+						<img src="static/images/edicaoUsuario/id_card.svg" alt="Senha">
+						<input type="text" placeholder="Senha" maxlength="14" id="senha" name="senha">
+					</div>
+					<div class="botoes">
+						<button type="submit" class="botao-procurar">Atualizar</button>
+						<button type="button" class="botao-cancelar">Remover</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
 
-                <h1>Editar Usuário</h1>
+<script>
+	document.getElementById('cpf').addEventListener('input', function(e) {
+		var value = e.target.value;
+		var CPFPattern = value.replace(/\D/g, '')
+				.replace(/(\d{3})(\d)/, '$1.$2')
+				.replace(/(\d{3})(\d)/, '$1.$2')
+				.replace(/(\d{3})(\d)/, '$1-$2')
+				.replace(/(-\d{2})\d+?$/, '$1');
+		e.target.value = CPFPattern;
+	});
 
-                <div class="colunas">
-                    <div class="barra-NOME">
-                        <img src="static/images/edicaoUsuario/simbolo_pessoa.svg" alt="">
-                        <input type="text" placeholder="Nome">
-                    </div>
+	function atualizar(event) {
+		event.preventDefault();
 
-                    <div class="barra-EMAIL">
-                        <img src="static/images/edicaoUsuario/email.svg" alt="">
-                        <input type="text" placeholder="E-mail">
-                    </div>
+		const idUsuario = document.querySelector('input[name="idUsuario"]').value;
+		const nome = document.querySelector('input[name="nome"]').value;
+		const senha = document.querySelector('input[name="senha"]').value;
+		const email = document.querySelector('input[name="email"]').value;
 
-                    <div class="barra-CPF">
-                        <img src="static/images/edicaoUsuario/id_card.svg" alt="">
-                        <input type="text" placeholder="CPF" maxlength="14" id="cpf">
-                    </div>
+		if (!idUsuario || !nome || !senha || !email) {
+			alert('Informe todos os campos necessários');
+			return;
+		}
 
-                    <div class="barra-CARGO">
-                        <img src="static/images/edicaoUsuario/work.svg" alt="">
-                        <select name="cargo" class="cargo-select">
-                            <option value="" disabled selected>Cargo</option>
-                            <option value="auxiliar-limpeza">Auxiliar de Limpeza</option>
-                            <option value="gerente">Gerente</option>
-                            <option value="atendente-caixa">Atendente de Caixa</option>
-                            <option value="estoquista">Estoquista</option>
-                        </select>
-                    </div>
+		const data = {
+			idUsuario: idUsuario,
+			nome: nome,
+			senha: senha,
+			email: email
+		};
 
-                    <div class="barra-SITUACAO">
-                        <img src="static/images/edicaoUsuario//medical_information.svg" alt="">
-                        <select name="situacao" class="situacao-select">
-                            <option value="" disabled selected>Situação</option>
-                            <option value="ativo">Ativo</option>
-                            <option value="inativo">Inativo</option>
-                        </select>
-                    </div>
-                </div>
+		fetch('/PI2-PROJETO/edicaoUsuario', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
+				.then(response => {
+					if (response.ok) {
+						alert('Usuário atualizado com sucesso!');
+					} else {
+						return response.text().then(text => { throw new Error(text) });
+					}
+				})
+				.catch(error => {
+					console.error('Erro:', error);
+					alert('Erro ao atualizar: ' + error.message);
+				});
+	}
 
-                <div class="botoes">
-                    <button class="botao-salvar">Salvar</button>
-                    <button class="botao-cancelar">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </section>
+	function buscarDadosUsuario() {
+	    const idUsuario = document.querySelector('input[name="idUsuario"]').value;
 
-    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
-    <script src="static/js/edicaoUsuario.js"></script>
+	    if (idUsuario) {
+	        fetch(`/PI2-PROJETO/edicaoUsuario?id=${idUsuario}`)
+	            .then(response => {
+	                if (!response.ok) {
+	                    throw new Error('Usuário não encontrado');
+	                }
+	                return response.json();
+	            })
+	            .then(data => {
+	                document.querySelector('input[name="nome"]').value = data.nome;
+	                document.querySelector('input[name="email"]').value = data.email;
+	                document.querySelector('input[name="senha"]').value = data.senha;
+	            })
+	            .catch(error => {
+	                console.error('Erro:', error);
+	                alert('Erro ao buscar dados do usuário: ' + error.message);
+	            });
+	    }
+	}
+
+</script>
+<script src="static/js/edicaoUsuario.js"></script>
 </body>
-
 </html>

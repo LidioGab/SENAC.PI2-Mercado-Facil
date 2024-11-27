@@ -45,6 +45,7 @@ public class EditarFuncionarioServelet extends HttpServlet {
 		String email = data.get("email");
 
 		try {
+			
 			int cargo = Integer.parseInt(cargoStr);
 			int setor = Integer.parseInt(setorStr);
 

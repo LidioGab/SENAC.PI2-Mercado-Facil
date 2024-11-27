@@ -1,85 +1,87 @@
 package com.model;
 
 public class Usuario {
-    private Integer id;           // Representa o Id_Usuario
-    private String nome;          // Representa o Nome_Usuario
-    private String senha;         // Representa a Senha
-    private String email;         // Representa o Email
-    private String idGrupo;       // Representa o Id_Grupo (VARCHAR na tabela)
-    private Integer idFuncionario; // Representa o Id_Funcionario
+	private String nome; // Representa o Nome_Usuario
+	private String senha; // Representa a Senha
+	private String email; // Representa o Email
+	private String idGrupo; // Representa o Id_Grupo (VARCHAR na tabela)
+	private Integer idUsuario; // Representa o Id_Funcionario
+	private Integer idFuncionario;
 
-    // Construtor vazio
-    public Usuario() {}
+	// Construtor vazio
 
-    // Construtor com parâmetros
-    public Usuario(Integer id, String nome, String senha, String email, String idGrupo, Integer idFuncionario) {
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-        this.email = email;
-        this.idGrupo = idGrupo;
-        this.idFuncionario = idFuncionario;
-    }
+	// Construtor com parâmetros
+	public Usuario(String nome, String senha, String email, String idGrupo, Integer idUsuario, Integer idFuncionario) {
+		this.nome = nome;
+		this.senha = senha;
+		this.email = email;
+		this.idGrupo = idGrupo;
+		this.idUsuario = idUsuario;
+		this.idFuncionario = idFuncionario;
 
-    // Getters e Setters
-    public Integer getId() {
-        return id;
-    }
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Usuario(String nome, String senha, String email, String idGrupo, Integer idUsuario) {
+		super();
+		this.nome = nome;
+		this.senha = senha;
+		this.email = email;
+		this.idGrupo = idGrupo;
+		this.idUsuario = idUsuario;
+	}
+	
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public Usuario() {
+		
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
-    public String getIdGrupo() {
-        return idGrupo;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setIdGrupo(String idGrupo) {
-        this.idGrupo = idGrupo;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Integer getIdFuncionario() {
-        return idFuncionario;
-    }
+	public String getIdGrupo() {
+		return idGrupo;
+	}
 
-    public void setIdFuncionario(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
+	public void setIdGrupo(String idGrupo) {
+		this.idGrupo = idGrupo;
+	}
 
-    // Método toString para facilitar a visualização dos dados do objeto
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", senha='" + senha + '\'' +
-                ", email='" + email + '\'' +
-                ", idGrupo='" + idGrupo + '\'' +
-                ", idFuncionario=" + idFuncionario +
-                '}';
-    }
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
+	public Integer getIdFuncionario() {
+		return idFuncionario;
+	}
+
+	public void setIdFuncionario(Integer idFuncionario) {
+		this.idFuncionario = idFuncionario;
+	}
+
 }
