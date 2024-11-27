@@ -143,7 +143,7 @@ public class DatabaseInitializer implements ServletContextListener {
             LOGGER.info("Inserted data into Funcionarios");
 
             statement.executeUpdate("INSERT INTO Usuario_Interno (Nome_Usuario, Senha, Email, Id_Grupo, Id_Funcionario) VALUES " +
-                    "('admin', '1234', 'admin', 1, 1)");
+                    "('admin', 'admin', 'admin', 1, 1)");
             LOGGER.info("Inserted data into Usuario_Interno");
 
 
