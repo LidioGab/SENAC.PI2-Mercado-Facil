@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="static/css/EditarFuncionario.css">
-	<link rel="stylesheet" href="static/css/padraoFifa.css">
-	
-	<title>Editar Funcionario</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="static/css/EditarFuncionario.css">
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+
+<title>Editar Funcionario</title>
 </head>
 <body>
-<header>
+	<header>
 		<div class="mercadofacil">
 			<a href="./dashboard"> <img
 				src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
@@ -17,82 +17,148 @@
 			</a>
 
 		</div>
-		        <div class="sair">
-        <p>
-<a href="./logout" class="logout-link">
-Sair
-    <img src="static/images/edicaoUsuario/sair.svg" alt="Sair">
-</a>
-</p>
-        </div>
+		<div class="sair">
+			<p>
+				<a href="./logout" class="logout-link"> Sair <img
+					src="static/images/edicaoUsuario/sair.svg" alt="Sair">
+				</a>
+			</p>
+		</div>
 	</header>
-<section class="centro">
-	<div class="texto">
-		<h1>Editar Funcionario</h1>
-	</div>
-	<form class="input-section" action="/EditarFuncionario" method="POST">
-		<div class="colunas">
-			<div>
-				<div id="nome">
-					<label for="nome">Nome</label>
-					<input type="text" class="img-nome" placeholder=" Nome do usuário" name="nome" required>
+	<section class="centro">
+		<div class="texto">
+			<h1>Editar Funcionario</h1>
+		</div>
+		<form class="input-section" action="/EditarFuncionario" method="POST">
+			<div class="colunas">
+				<div>
+					<div id="nome">
+						<label for="nome">Nome</label> <input type="text" class="img-nome"
+							placeholder=" Nome do usuário" name="nome" required>
+					</div>
+					<div id="email">
+						<label for="email">Email</label> <input type="email"
+							class="img-email" placeholder=" E-mail" name="email" required>
+					</div>
+					<div id="cpf">
+						<label for="cpf">CPF</label> <input type="text" class="img-cpf"
+							placeholder=" CPF" name="cpf" required>
+					</div>
 				</div>
-				<div id="email">
-					<label for="email">Email</label>
-					<input type="email" class="img-email" placeholder=" E-mail" name="email" required>
-				</div>
-				<div id="cpf">
-					<label for="cpf">CPF</label>
-					<input type="text" class="img-cpf" placeholder=" CPF" name="cpf" required>
+				<div>
+					<div id="cargo">
+						<label for="cargo">Cargo</label> <select name="cargo"
+							class="img-cargo" required>
+							<option value="" disabled selected>Selecione uma
+								opção...</option>
+							<option value="1">Caixa</option>
+							<option value="2">Almoxarife</option>
+							<option value="3">Administrador</option>
+							<option value="4">Assistente de Recursos Humanos</option>
+							<option value="5">Auxiliar de Manutenção</option>
+							<option value="6">Gerente</option>
+						</select>
+					</div>
+					<div id="setor">
+						<label for="setor">Setor</label> <select name="setor"
+							class="img-setor" required>
+							<option value="" disabled selected>Selecione uma
+								opção...</option>
+							<option value="1">Financeiro</option>
+							<option value="2">Vendas</option>
+							<option value="3">Logistica</option>
+							<option value="4">Recursos Humanos</option>
+							<option value="5">Manutenção</option>
+							<option value="6">Administração</option>
+						</select>
+					</div>
+					<div id="situacao">
+						<label for="situacao">Situação</label> <select name="situacao"
+							class="img-situacao" required>
+							<option value="" disabled selected>Selecione uma
+								opção...</option>
+							<option value="ativo">Ativo</option>
+							<option value="inativo">Inativo</option>
+							<option value="suspenso">Suspenso</option>
+						</select>
+					</div>
 				</div>
 			</div>
-			<div>
-				<div id="cargo">
-					<label for="cargo">Cargo</label>
-					<select name="situacao" class="img-cargo" required>
-						<option value="" disabled selected>Selecione uma opção...</option>
-						<option value="ativo">Caixa</option>
-						<option value="inativo">Almoxarife</option>
-						<option value="suspenso">Administrador</option>
-						<option value="suspenso">Assistente de Recursos Humanos</option>
-						<option value="suspenso">Auxiliar de Manutenção</option>
-						<option value="suspenso">Gerente</option>
-					</select>
-				</div>
-				<div id="setor">
-					<label for="setor">Setor</label>
-					<select name="situacao" class="img-setor" required>
-						<option value="" disabled selected>Selecione uma opção...</option>
-						<option value="ativo">Financeiro</option>
-						<option value="inativo">Vendas</option>
-						<option value="suspenso">Logistica</option>
-						<option value="suspenso">Recursos Humanos</option>
-						<option value="suspenso">Manutenção</option>
-						<option value="suspenso">Administração</option>
-					</select>
-				</div>
-				<div id="situacao">
-					<label for="situacao">Situação</label>
-					<select name="situacao" class="img-situacao" required>
-						<option value="" disabled selected>Selecione uma opção...</option>
-						<option value="ativo">Ativo</option>
-						<option value="inativo">Inativo</option>
-						<option value="suspenso">Suspenso</option>
-					</select>
-				</div>
+			<div class="botoes" id="botoes">
+				<button type="button" class="salvar" onclick="atualizar()">Salvar</button>
+				<button type="button" class="cancelar">Cancelar</button>
 			</div>
-		</div>
-		<div class="botoes" id="botoes">
-			<button type="submit" class="salvar">Salvar</button>
-			<button type="submit" class="cancelar">Cancelar</button>
-		</div>
-	</form>
+		</form>
 
+	</section>
+	<footer>
+		<p>© 2024 Code Commiters. All Rights Reserved.</p>
+	</footer>
 
-</section>
-<footer>
-	<p>© 2024 Code Commiters. All Rights Reserved.</p>
-</footer>
+	<script>
+	
+	document.getElementById('CPF').addEventListener('input', function(e) {
+		var value = e.target.value;
+		var CPFPattern = value.replace(/\D/g, '') 
+				.replace(/(\d{3})(\d)/, '$1.$2') 
+				.replace(/(\d{3})(\d)/, '$1.$2') 
+				.replace(/(\d{3})(\d)/, '$1-$2') 
+				.replace(/(-\d{2})\d+?$/, '$1'); 
+		e.target.value = CPFPattern;
+	});
+
+	document.getElementById('opcaoInput').addEventListener('keydown',
+			function(e) {
+				if (e.key !== "Tab" && e.key !== "ArrowDown") {
+					e.preventDefault();
+				}
+			});
+
+	function atualizar() {
+		const nome = document.querySelector('input[name="nome"]').value;
+		const cpf = document.querySelector('input[name="cpf"]').value;
+		const cargo = document.querySelector('select[name="cargo"]').value;
+		const setor = document.querySelector('select[name="setor"]').value;
+		const situacao = document.querySelector('select[name="situacao"]').value;
+		const email = document.querySelector('input[name="email"]').value;
+
+		if (!nome || !cpf || !cargo || !setor || !situacao || !email) {
+			alert('Informe todos os campos necessários');
+			return;
+		}
+
+		const data = {
+			nome: nome,
+			cpf: cpf,
+			cargo: cargo,
+			setor: setor,
+			situacao: situacao,
+			email: email
+		};
+
+		fetch('http://localhost:8080/PI2-PROJETO/EditarFuncionario', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+
+		})
+
+		.then(response => {
+	        if (response.ok) {
+	            alert('Funcionário atualizado com sucesso!');
+	           
+	        } else {
+	            return response.text().then(text => { throw new Error(text) });
+	        }
+	    })
+	    .catch(error => {
+	        console.error('Erro:', error);
+	        alert('Erro ao atualizar: ' + error.message);
+	    });
+	}
+</script>
 </body>
 
 </html>
