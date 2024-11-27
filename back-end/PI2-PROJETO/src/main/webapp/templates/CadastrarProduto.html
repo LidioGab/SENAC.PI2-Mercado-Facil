@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Cadastro de Produto</title>
 <style>
 body {
@@ -19,27 +20,40 @@ body {
 
 
 .card {
-	background-color: white;
-	border-radius: 8px;
+	background-color: #f5f5f5;
+	border-radius: 15px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	padding: 30px;
+	padding: 70px;
 	width: 400px;
+	position: absolute;
+	transform: (-50%, -50%);
+
+
 }
 
 .card h2 {
 	text-align: center;
-	color: #003366;
+	color: #385084;
 	margin-bottom: 20px;
+	font-size: 25px;
+	margin-top: -30px;
+	padding-top: 10px;
+	font-weight: bolder;
+	padding: 10px;
 }
 
 .form-group {
 	margin-bottom: 20px;
+	align-items: center;
+	/* display: flex; */
+	border-radius: 9px;
+	
 }
 
 .form-group label {
 	display: block;
 	font-weight: bold;
-	color: #666;
+	color: #9a9a9a;
 	margin-bottom: 5px;
 }
 
@@ -47,17 +61,24 @@ body {
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;
-	border-radius: 4px;
+	border-radius: 8px;
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+	border: none;
 }
 
 .btn {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	padding: 10px;
-	width: 100%;
 	cursor: pointer;
+	background-color: #1490D9;
+	font-size: 11px;
+	color: #ffff;
+	border: none;
+	width: 130px;
+	margin-top: 30px;
+	padding: 15px;
+	border-radius: 10px;
+	justify-content: center;
+	margin-left: 120px;
+	
 }
 
 .btn:hover {
@@ -135,13 +156,23 @@ footer {
 	justify-content:center;
 	align-items:center;
 }
+.button {
+	background-color: #1490D9;
+	font-size: 11px;
+	color: #ffff;
+	border: none;
+	width: 40%;
+	margin-top: 30px;
+}
+
+
 </style>
 </head>
 <body>
 	<header>
 		<div class="mercadofacil">
 			<a href="./dashboard"> <img
-				src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+				src="static/images/cadastroProduto/market.svg" alt="">
 				Mercado Fácil
 			</a>
 
@@ -149,7 +180,7 @@ footer {
 		<div class="sair">
 
 			<p>Sair</p>
-			<img src="static/images/edicaoUsuario/sair.svg" alt="">
+			<img src="static/images/cadastroProduto/logout.svg" alt="">
 
 
 		</div>
