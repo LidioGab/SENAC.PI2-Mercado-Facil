@@ -19,15 +19,11 @@ import com.google.gson.Gson;
 import com.model.Usuario;
 
 @WebServlet("/edicaoUsuario")
-public class edicaoUsuarioServlet extends HttpServlet {
+public class EdicaoUsuarioServlet extends HttpServlet {
+
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("/templates/edicaoUsuario.html").forward(request, response);
-	}
-
-	protected void doGet1(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String idUsuario = request.getParameter("id");
 
