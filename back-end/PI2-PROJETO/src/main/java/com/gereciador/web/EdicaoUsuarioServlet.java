@@ -21,11 +21,6 @@ import com.model.Usuario;
 @WebServlet("/edicaoUsuario")
 public class EdicaoUsuarioServlet extends HttpServlet {
 
-	
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.getRequestDispatcher("/templates/edicaoUsuario.html").forward(request, response);
-	}*/
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

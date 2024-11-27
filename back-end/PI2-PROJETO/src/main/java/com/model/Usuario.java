@@ -1,16 +1,13 @@
 package com.model;
 
 public class Usuario {
-	private String nome; // Representa o Nome_Usuario
-	private String senha; // Representa a Senha
-	private String email; // Representa o Email
-	private String idGrupo; // Representa o Id_Grupo (VARCHAR na tabela)
-	private Integer idUsuario; // Representa o Id_Funcionario
+	private String nome; 
+	private String senha; 
+	private String email; 
+	private String idGrupo; 
+	private Integer idUsuario; 
 	private Integer idFuncionario;
 
-	// Construtor vazio
-
-	// Construtor com parâmetros
 	public Usuario(String nome, String senha, String email, String idGrupo, Integer idUsuario, Integer idFuncionario) {
 		this.nome = nome;
 		this.senha = senha;
@@ -30,8 +27,6 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 	
-
-
 	public Usuario() {
 		
 	}
