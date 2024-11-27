@@ -120,8 +120,17 @@ public class DatabaseInitializer implements ServletContextListener {
             // Inserir dados na tabela Produto
             statement.executeUpdate("INSERT INTO Produto (Nome_Produto, Valor_Produto, Categoria, Descricao_Produto) VALUES " +
                     "('Smartphone XYZ', 1500.00, 1, 'Smartphone de última geração')," +
-                    "('Refrigerante ABC', 5.00, 2, 'Refrigerante sabor cola')");
+                    "('Refrigerante ABC', 5.00, 2, 'Refrigerante sabor cola')," +
+                    "('Camiseta Polo', 49.90, 3, 'Camiseta de algodão de alta qualidade')," +
+                    "('Notebook Ultrafino', 4500.00, 1, 'Notebook com processador de última geração')," +
+                    "('Cadeira Gamer', 750.00, 4, 'Cadeira ergonômica para longas sessões de jogos')," +
+                    "('Fone de Ouvido Bluetooth', 299.99, 5, 'Fone de ouvido sem fio com cancelamento de ruído')," +
+                    "('Luminária LED', 89.90, 6, 'Luminária de mesa com controle de intensidade')," +
+                    "('Caderno de Anotações', 15.00, 7, 'Caderno de capa dura, ideal para anotações')," +
+                    "('Lava-louças Automática', 1200.00, 2, 'Lava-louças eficiente para uso doméstico')," +
+                    "('Cafeteira Elétrica', 150.00, 2, 'Cafeteira para preparo rápido de café quente e fresco');");
             LOGGER.info("Inserted data into Produto");
+
 
             statement.executeUpdate("INSERT INTO Fornecedores (Nome_Fornecedor, Tipo_Comercio, Telefone, CEP, Rua, Bairro, Estado, Pais, Responsavel, Documento, Status_Fornecedor) VALUES " +
                     "('Fornecedor A', 1, '123456789', '12345-678', 'Rua Exemplo', 'Bairro A', 'Estado A', 'Brasil', 'João Silva', '1234567890', 'Ativo')");

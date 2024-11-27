@@ -1,145 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="static/css/dashboard.css"/>
-                <link rel="stylesheet" href="static/css/padraoFifa.css">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="static/css/dashboard.css" />
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
 </head>
 <body>
-    <header>
-        <div class="mercadofacil">
-        	<a href = "./dashboard">
-        	<img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
-        	Mercado Fácil
-        	</a>
-            
-        </div>
-        <div class="sair">
-            
-            <p>Sair</p>
-           	<img src="static/images/edicaoUsuario/sair.svg" alt="">
-            
-            
-        </div>
-    </header>
-    
-    <main>
-        <h1>Bem-Vindo</h1>
-        <section class="menu">
-            <div class="opcoes"> 
+	<header>
+		<div class="mercadofacil">
+			<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+				Mercado Fácil
+			</a>
 
-              <!--serviços de estoque-->
+		</div>
+		<div class="sair">
 
-                <h2>Serviços de Estoque</h2>
-                <ul>
-                    <li>
-                        <a href="#">
-                            <div class="icon">
-                                <img src="static/images/dashboard/pallet.png" class="menu-logs">
-                            </div>Visualizar Estoque</a></li>
-
-                    <li><a href="./AnaliseEstoque">
-                        <div class="icon">
-                            <img src="static/images/dashboard/widgets.png" class="menu-logs">
-                        </div>Análises do Estoque</a></li>
-
-                         <li><a href="#">
-                           <div class="icon">
-                                <img src="static/images/dashboard/quick.png" class="menu-logs">
-                            </div>Comprar Mercadoria</a></li>
-
-                           <li><a href="./statusProduto">
-                               <div class="icon">
-                                  <img src="static/images/dashboard/inventory.png" class="menu-logs">
-                            </div>Status Mercadoria</a></li>
-
-                            <li><a href="#">
-                                <div class="icon">
-                                    <img src="static/images/dashboard/person_pin.png" class="menu-logs">
-                                </div>Fornecedores</a></li>                   
-                </ul>
-            </div>
+			<p>Sair</p>
+			<img src="static/images/edicaoUsuario/sair.svg" alt="">
 
 
-               <!--serviços de produto-->
+		</div>
+	</header>
+
+	<main>
+		<h1>Bem-Vindo</h1>
+		<section class="menu">
+			<div class="opcoes">
+
+				<!--serviços de estoque-->
+
+				<h2>Serviços de Estoque</h2>
+				<ul>
+					<li><a href="#">
+							<div class="icon">
+								<img src="static/images/dashboard/pallet.png" class="menu-logs">
+							</div>Visualizar Estoque
+					</a></li>
+
+					<li><a href="./AnaliseEstoque">
+							<div class="icon">
+								<img src="static/images/dashboard/widgets.png" class="menu-logs">
+							</div>Análises do Estoque
+					</a></li>
+
+					<li><a href="#">
+							<div class="icon">
+								<img src="static/images/dashboard/quick.png" class="menu-logs">
+							</div>Comprar Mercadoria
+					</a></li>
+
+					<li><a href="./statusProduto">
+							<div class="icon">
+								<img src="static/images/dashboard/inventory.png"
+									class="menu-logs">
+							</div>Status Mercadoria
+					</a></li>
+
+					<li><a href="#">
+							<div class="icon">
+								<img src="static/images/dashboard/person_pin.png"
+									class="menu-logs">
+							</div>Fornecedores
+					</a></li>
+				</ul>
+			</div>
 
 
-            <div class="opcoes"> 
-                <h2>Serviços de Produto</h2>
-                <ul>
-                    <li>
-                        <a href="./cadastrarProduto">
-                            <div class="icon">
-                                <img src="static/images/dashboard/box_add.png" class="menu-logs">
-                            </div>Cadastrar Produto</a></li>
-
-                    <li><a href="#">
-                        <div class="icon">
-                            <img src="static/images/dashboard/box_edit.png" class="menu-logs">
-                        </div>Editar Produto</a></li>    
-                        
-                   
-                </ul>
-            </div>
+			<!--serviços de produto-->
 
 
-                <!--serviços de usuário-->
+			<div class="opcoes">
+				<h2>Serviços de Produto</h2>
+				<ul>
+					<li><a href="./cadastrarProduto">
+							<div class="icon">
+								<img src="static/images/dashboard/box_add.png" class="menu-logs">
+							</div>Cadastrar Produto
+					</a></li>
+
+					<li><a href="#">
+							<div class="icon">
+								<img src="static/images/dashboard/box_edit.png"
+									class="menu-logs">
+							</div>Editar Produto
+					</a></li>
+
+					<li><a href="./listarProdutos">
+							<div class="icon">
+								<img src="static/images/dashboard/box_edit.png"
+									class="menu-logs">
+							</div>Procurar Produtos
+					</a><li/>
+				</ul>
+			</div>
 
 
-            <div class="opcoes"> 
-                <h2>Serviços de Usuário</h2>
-                <ul>
-                    <li>
-                        <a href="./cadastroUsuario">
-                            <div class="icon">
-                                <img src="static/images/dashboard/person_add.png" class="menu-logs">
-                            </div>Cadastrar Usuário
-                            
-                        </a>
-                  </li>
+			<!--serviços de usuário-->
 
-                    <li>
-                    <a href="./edicaoUsuario">
-                        <div class="icon">
-                            <img src="static/images/dashboard/person_edit.png" class="menu-logs">
-                        </div>Editar Usuário
-                        </a>
-                     </li>
 
-                         <li><a href="#">
-                           <div class="icon">
-                                <img src="static/images/dashboard/person_alert.png" class="menu-logs">
-                         </div>Visualizar Logs</a></li>
-                         
-                     <li>
-                        <a href="./CadastroFuncionario">
-                            <div class="icon">
-                                <img src="static/images/dashboard/person_add.png" class="menu-logs">
-                            </div>Cadastro Funcionario
-                        </a>
-                  </li>
-                  
-                  <li>
-                        <a href="./EditarFuncionario">
-                            <div class="icon">
-                                <img src="static/images/dashboard/person_add.png" class="menu-logs">
-                            </div>Editar Funcionario
-                        </a>
-                  </li>
-               
-                </ul>
-            </div>
+			<div class="opcoes">
+				<h2>Serviços de Usuário</h2>
+				<ul>
+					<li><a href="./cadastroUsuario">
+							<div class="icon">
+								<img src="static/images/dashboard/person_add.png"
+									class="menu-logs">
+							</div>Cadastrar Usuário
 
-        </section>
-    </main>
+					</a></li>
 
-    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+					<li><a href="./edicaoUsuario">
+							<div class="icon">
+								<img src="static/images/dashboard/person_edit.png"
+									class="menu-logs">
+							</div>Editar Usuário
+					</a></li>
+
+					<li><a href="#">
+							<div class="icon">
+								<img src="static/images/dashboard/person_alert.png"
+									class="menu-logs">
+							</div>Visualizar Logs
+					</a></li>
+
+					<li><a href="./CadastroFuncionario">
+							<div class="icon">
+								<img src="static/images/dashboard/person_add.png"
+									class="menu-logs">
+							</div>Cadastro Funcionario
+					</a></li>
+
+					<li><a href="./EditarFuncionario">
+							<div class="icon">
+								<img src="static/images/dashboard/person_add.png"
+									class="menu-logs">
+							</div>Editar Funcionario
+					</a></li>
+
+				</ul>
+			</div>
+
+		</section>
+	</main>
+
+	<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
 
 </body>
 </html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status do Produto</title>
+<link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet">
+    
+    <link rel="stylesheet" href="static/css/padraoFifa.css">
+<style>
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%
+}
+
+footer{
+    width:100%
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width:100%;
+    flex-direction: column;
+}
+
+.container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+}
+
+.container > h1{
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    font-size: 16px;
+}
+
+.search-box button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-box button:hover {
+    background-color: #3a7eb8;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th, .product-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+    background-color: #f5f5f5;
+}
+
+.product-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Limita a altura do corpo da tabela e adiciona o scroll */
+.product-table tbody {
+    max-height: 300px;  /* Limite a altura da tabela */
+    overflow-y: auto;   /* Ativa o scroll vertical quando necessário */
+    display: block;
+    height: 300px;      /* Definindo uma altura fixa para tbody */
+}
+
+.product-table thead, .product-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="mercadofacil">
+            <a href="./dashboard"> <img
+                src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+                Mercado Fácil
+            </a>
+
+        </div>
+        <div class="sair">
+
+            <p>Sair</p>
+            <img src="static/images/edicaoUsuario/sair.svg" alt="">
+
+
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Listar Produtos</h1>
+        <div class="search-box">
+            <input type="text" id="search-input"
+                placeholder="Digite o ID ou Nome do Produto">
+            <button id="search-button">Buscar</button>
+        </div>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>ID produto</th>
+                    <th>Nome do Produto</th>
+                    <th>Valor Produto</th>
+                    <th>Categoria </th>
+                </tr>
+            </thead>
+            <tbody id="product-tbody">
+                <!-- Linhas da tabela serão adicionadas aqui dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const productTbody = document.getElementById('product-tbody');
+
+        function renderProductTable(products) {
+            productTbody.innerHTML = '';
+
+            if (products.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="4">Nenhum produto encontrado</td>`;
+                productTbody.appendChild(row);
+            } else {
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.idProduto || '-'}</td>
+                        <td>${product.nome || '-'}</td>
+                        <td>${product.valorProduto || '-'}</td>
+                        <td>${product.categoria || '-'}</td>
+                    `;
+                    productTbody.appendChild(row);
+                });
+            }
+        }
+
+        function searchProducts(query) {
+            const url = `http://localhost:8080/PI2-PROJETO/procurarProduto?pesquisa=${query}`;
+            
+            fetch(url)
+                .then(response => response.json()) 
+                .then(data => {
+                    renderProductTable(data); 
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar produtos:', error);
+                    renderProductTable([]); 
+                });
+        }
+
+        function filterProducts() {
+            const searchTerm = searchInput.value.trim();
+            searchProducts(searchTerm);
+        }
+
+        searchButton.addEventListener('click', () => {
+            filterProducts();  
+        });
+
+        let debounceTimeout;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                filterProducts();
+            }, 300);
+        });
+
+        searchProducts('');
+    </script>
+</body>
+</html>
