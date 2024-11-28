@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Status do Funcionário</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+
+</head>
+<style>
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+}
+
+footer {
+    width: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+.container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1300px;
+    padding: 30px;
+}
+
+.container > h1 {
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    font-size: 16px;
+}
+
+.search-box button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search-box button:hover {
+    background-color: #3a7eb8;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-table th, .employee-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+.employee-table th {
+    background-color: #f5f5f5;
+}
+
+.employee-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.employee-table tbody {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+    height: 300px;
+}
+
+.employee-table thead, .employee-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.idFunc{
+	width:20px;
+	margin-right:10px;
+}
+
+.idCargo{
+	width:80px;
+	margin-right:10px;
+}
+
+.CPF{
+	width: 160px;
+	margin-right:10px;
+}
+</style>
+
+<body>
+    <header>
+        <div class="mercadofacil">
+            <a href="./dashboard"><img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">Mercado Fácil</a>
+        </div>
+        <div class="sair">
+            <p>Sair</p>
+            <img src="static/images/edicaoUsuario/sair.svg" alt="">
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Listar Funcionários</h1>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Digite o ID ou Nome do Funcionário">
+            <button id="search-button">Buscar</button>
+        </div>
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th class="idFunc">ID</th>
+                    <th>Nome</th>
+                    <th class="CPF">CPF</th>
+                    <th class="idCargo">Cargo</th>
+                    <th class="idCargo">Setor</th>
+                    <th class="CPF">Situação</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="employee-tbody">
+            </tbody>
+        </table>
+    </div>
+    <footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const employeeTbody = document.getElementById('employee-tbody');
+
+        function renderEmployeeTable(employees) {
+            employeeTbody.innerHTML = '';
+
+            if (employees.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="7">Nenhum funcionário encontrado</td>`;
+                employeeTbody.appendChild(row);
+            } else {
+                employees.forEach(employee => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="idFunc" >${employee.id || '-'}</td>
+                        <td>${employee.nome || '-'}</td>
+                        <td class="CPF">${employee.cpf || '-'}</td>
+                        <td  class="idCargo">${employee.cargo || '-'}</td>
+                        <td  class="idCargo">${employee.setor || '-'}</td>
+                        <td class="CPF">${employee.situacao || '-'}</td>
+                        <td>${employee.email || '-'}</td>
+                    `;
+                    employeeTbody.appendChild(row);
+                });
+            }
+        }
+
+        function searchEmployees(query) {
+            const url = `http://localhost:8080/PI2-PROJETO/procurarFuncionario?pesquisa=${query}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    renderEmployeeTable(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar funcionários:', error);
+                    renderEmployeeTable([]);
+                });
+        }
+
+        function filterEmployees() {
+            const searchTerm = searchInput.value.trim();
+            searchEmployees(searchTerm);
+        }
+
+        searchButton.addEventListener('click', () => {
+            filterEmployees();
+        });
+
+        let debounceTimeout;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                filterEmployees();
+            }, 300);
+        });
+
+        searchEmployees('');
+    </script>
+</body>
+</html>

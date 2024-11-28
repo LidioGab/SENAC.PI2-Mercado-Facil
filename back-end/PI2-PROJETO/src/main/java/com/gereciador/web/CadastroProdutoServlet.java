@@ -14,74 +14,73 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 @WebServlet("/cadastrarProduto")
 public class CadastroProdutoServlet extends HttpServlet {
-		private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        request.getRequestDispatcher("/templates/CadastrarProduto.html").forward(request, response);
-	    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/templates/CadastrarProduto.html").forward(request, response);
+    }
 
-	    @Override
-	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        String jsonString = request.getReader().lines().collect(Collectors.joining());
-	        System.out.println("Recebido: " + jsonString);
-
-	        Map<String, String> data = parseJsonToMap(jsonString);
-
-	        String nome = data.get("nome");
-	        String valors = data.get("valor");
-	        String categorias = data.get("categoria");
-	        String descricao = data.get("descricao");
-	        
-	        
-	        try {
-	        	double valor = Double.parseDouble(valors);
-	        	int categoria = Integer.parseInt(categorias);
-	        	
-	        	 try (Connection connection = new ConnectionFactory().getConnection()){
-	        		 Produto produto = new Produto();
-	        		 
-	        		 produto.setNome(nome);
-	        		 produto.setValorProduto(valor);
-	        		 produto.setCategoria(categoria);
-	        		 produto.setDescricaoProduto(descricao);
-	        		 
-	        		 
-	        		 ProdutoDAO ProdutoDAO = new ProdutoDAO(connection);
-	        		 ProdutoDAO.inserir(produto); 
-	        		 
-	        		
-	        		 
-	        	 }
-	        }catch (NumberFormatException e) {
-	            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID do funcionário inválido.");
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro inesperado.");
-	        }
-	    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String jsonString = request.getReader().lines().collect(Collectors.joining());
+        Map<String, String> data = parseJsonToMap(jsonString);
 
 
+        if (!data.containsKey("nome") || !data.containsKey("valor") ||
+            !data.containsKey("categoria") || !data.containsKey("descricao")) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Todos os campos são obrigatórios.");
+            return;
+        }
 
-	    private Map<String, String> parseJsonToMap(String jsonString) {
-	        Map<String, String> data = new HashMap<>();
-	        jsonString = jsonString.trim();
+        String nome = data.get("nome");
+        String valors = data.get("valor");
+        String categorias = data.get("categoria");
+        String descricao = data.get("descricao");
 
-	        if (jsonString.startsWith("{") && jsonString.endsWith("}")) {
-	            jsonString = jsonString.substring(1, jsonString.length() - 1).trim();
-	        }
-	        String[] keyValuePairs = jsonString.split(",");
+        try {
+            double valor = Double.parseDouble(valors);
+            int categoria = Integer.parseInt(categorias);
 
-	        for (String pair : keyValuePairs) {
-	            String[] keyValue = pair.split(":");
-	            if (keyValue.length == 2) {
-	                String key = keyValue[0].trim().replace("\"", "");
-	                String value = keyValue[1].trim().replace("\"", "");
-	                data.put(key, value);
-	            }
-	        }
-	        return data;
-	    }
+            try (Connection connection = new ConnectionFactory().getConnection()) {
+                Produto produto = new Produto();
+                produto.setNome(nome);
+                produto.setValorProduto(valor);
+                produto.setCategoria(categoria);
+                produto.setDescricaoProduto(descricao);
+
+                ProdutoDAO produtoDAO = new ProdutoDAO(connection);
+                produtoDAO.inserir(produto);
+            }
+
+            response.setStatus(HttpServletResponse.SC_CREATED);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Valores numéricos inválidos.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro inesperado.");
+        }
+    }
+
+    private Map<String, String> parseJsonToMap(String jsonString) {
+        Map<String, String> data = new HashMap<>();
+        jsonString = jsonString.trim();
+
+        if (jsonString.startsWith("{") && jsonString.endsWith("}")) {
+            jsonString = jsonString.substring(1, jsonString.length() - 1).trim();
+        }
+        String[] keyValuePairs = jsonString.split(",");
+
+        for (String pair : keyValuePairs) {
+            String[] keyValue = pair.split(":");
+            if (keyValue.length == 2) {
+                String key = keyValue[0].trim().replace("\"", "");
+                String value = keyValue[1].trim().replace("\"", "");
+                data.put(key, value);
+            }
+        }
+        return data;
+    }
 }

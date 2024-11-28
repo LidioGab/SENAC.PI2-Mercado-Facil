@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criar Conta</title>
+<link rel="stylesheet" href="static/css/CadastroUser.css">
+<link rel="stylesheet" href="static/css/padraoFifa.css">
+</head>
+<style>
+body {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color:#f6f6f6;
+	justify-content: space-between;
+}
+
+.form-group {
+	margin-right: 30px;
+}
+
+.product-edit-form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 40px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.product-edit-form h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.product-edit-form .form-group {
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.product-edit-form label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.product-edit-form .form-control {
+	display: block;
+	width: 100%;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.product-edit-form .form-control:focus {
+	border-color: #66afe9;
+	outline: 0;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
+		rgba(102, 175, 233, .6);
+}
+
+.product-edit-form .btn-primary, .product-edit-form .btn-secondary {
+	padding: 6px 12px;
+	font-size: 14px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.product-edit-form .btn-primary {
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+
+.product-edit-form .btn-primary:hover {
+	background-color: #286090;
+	border-color: #204d74;
+}
+
+.product-edit-form .btn-secondary {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.product-edit-form .btn-secondary:hover {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+
+form {
+	display: flex;
+	padding: 0px 0px 0px 50px;
+}
+
+#description {
+	width: 196px;
+	resize: none;
+}
+</style>
+
+
+<body>
+	<header>
+		<div class="mercadofacil">
+			<a href="./dashboard"> <img
+				src="static/images/edicaoUsuario/logo_mercadofacil.svg"
+				alt="Logo Mercado Fácil"> Mercado Fácil
+			</a>
+		</div>
+		<div class="sair">
+			<p>
+				<a href="./logout" class="logout-link">Sair<img
+					src="static/images/edicaoUsuario/sair.svg" alt="Sair"></a>
+			</p>
+		</div>
+	</header>
+
+	<div class="product-edit-form">
+		<h2>Editar Produto</h2>
+		<form>
+			<div class="form-group">
+				<label for="name">ID do Produto</label> <input type="text"
+					class="form-control" id="id" placeholder="ID do Produto">
+			</div>
+
+			<div class="form-group">
+				<label for="name">Nome</label> <input type="text"
+					class="form-control" id="name" placeholder="Nome do produto">
+			</div>
+
+			<div class="form-group">
+				<label for="price">Preço</label> <input type="number"
+					class="form-control" id="price"
+					placeholder="Selecione uma opção...">
+			</div>
+
+			<div class="form-group">
+				<label for="category">Categoria</label> <select class="form-control"
+					id="categoria" name="categoria" required>
+					<option value="">Selecione uma categoria</option>
+					<option value=1>Eletrônicos</option>
+					<option value=2>Alimentos</option>
+					<option value=3>Bebidas</option>
+					<option value=4>Hortifruti</option>
+					<option value=5>Carnes e Peixes</option>
+					<option value=6>Higiene Pessoal</option>
+					<option value=7>Limpeza</option>
+					<option value=8>Pet Shop</option>
+					<option value=9>Padaria</option>
+					<option value=10>Congelados</option>
+					<option value=11>Bazar</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="description">Descrição do produto</label>
+				<textarea class="form-control" id="description" rows="3"></textarea>
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<button type="button" class="btn btn-secondary">Remover
+					Produto</button>
+			</div>
+		</form>
+	</div>
+
+	<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+	<script type="text/javascript">
+
+  document.getElementById("id").addEventListener("blur", function () {
+    const productId = this.value;
+
+    if (productId) {
+
+      fetch(`/api/produtos/${productId}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Produto não encontrado");
+          }
+          return response.json();
+        })
+        .then((product) => {
+          document.getElementById("name").value = product.nome || "";
+          document.getElementById("price").value = product.preco || "";
+          document.getElementById("categoria").value = product.categoria || "";
+          document.getElementById("description").value = product.descricao || "";
+        })
+        .catch((error) => {
+          alert("Erro ao buscar produto: " + error.message);
+          console.error(error);
+        });
+    }
+  });
+  </script>
+
+</body>
+</html>

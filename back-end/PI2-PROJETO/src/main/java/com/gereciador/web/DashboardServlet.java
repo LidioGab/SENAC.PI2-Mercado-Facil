@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/dashboard")
 public class DashboardServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static final long TIMEOUT = 30000;
+    private static final long TIMEOUT = 900000000;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class DashboardServlet extends HttpServlet {
                 session.invalidate();
                 response.sendRedirect("index.html?timeout=true");
             } else {
-                session.setAttribute("loginTime", currentTime); // Reset timer
+                session.setAttribute("loginTime", currentTime); 
                 request.getRequestDispatcher("/templates/dashboard.html").forward(request, response);
             }
         } else {

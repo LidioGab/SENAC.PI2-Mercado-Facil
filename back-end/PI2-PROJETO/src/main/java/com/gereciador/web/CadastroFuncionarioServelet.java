@@ -58,7 +58,7 @@ public class CadastroFuncionarioServelet extends HttpServlet {
                 funcionario.setEmail(email);
                 
                 FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
-                funcionarioDAO.CadastrarFuncionario(funcionario);
+                funcionarioDAO.cadastrarFuncionario(funcionario);
                 
             } catch (SQLException e) {
                 throw new ServletException("Erro ao conectar ao banco de dados.", e);

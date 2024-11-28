@@ -59,7 +59,7 @@ public class EditarFuncionarioServelet extends HttpServlet {
 				funcionario.setEmail(email);
 
 				FuncionarioDAO funcionarioDAO = new FuncionarioDAO(connection);
-				funcionarioDAO.atualizar(funcionario);
+				funcionarioDAO.atualizarFuncionario(funcionario);
 
 				response.setStatus(HttpServletResponse.SC_OK);
 			} catch (SQLException e) {

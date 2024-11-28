@@ -16,14 +16,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet("/listarProdutos")
-public class ListarProdutosServlet extends HttpServlet {
+@WebServlet("/editarProduto")
+public class EditarProdutoPageServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/templates/ListarProdutos.html").forward(request, response);
+        request.getRequestDispatcher("/templates/editarProduto.html").forward(request, response);
     }
 
 

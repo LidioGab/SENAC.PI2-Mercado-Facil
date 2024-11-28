@@ -19,8 +19,10 @@ import com.google.gson.Gson;
 import com.model.Usuario;
 
 @WebServlet("/edicaoUsuario")
-public class EdicaoUsuarioServlet extends HttpServlet {
+public class edicaoUsuarioServlet extends HttpServlet {
 
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

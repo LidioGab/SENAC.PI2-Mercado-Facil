@@ -1,59 +1,163 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./static/css/login.css" media="screen" />
-            <link rel="stylesheet" href="static/css/padraoFifa.css">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado Fácil</title>
-</head>
-<body onload="mostrarAlertaErro()">
-    <header>
-        <div class="mercadofacil">
-        	<a href = "./dashboard">
-        	<img src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
-        	Mercado Fácil
-        	</a>
-            
-        </div>
-        <div class="sair">
-            
-            <p>Sair</p>
-           	<img src="static/images/edicaoUsuario/sair.svg" alt="">
-            
-            
-        </div>
-    </header>
-    
-    <div class="banner">
+	<!DOCTYPE html>
+	<html lang="pt-br">
+	<head>
+	<meta name="viewport">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./static/css/login.css"
+		media="screen" />
+	<link rel="stylesheet" href="static/css/padraoFifa.css">
 
-    </div>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mercado Fácil</title>
+	</head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
-<div class="login">
-        <h2>Acesso ao Sistema</h2>
-        <form method="post" action="/PI2-PROJETO/login">
-            <div>
-                <input type="text" id="login" name="login" placeholder="Email" required>
-                <br/><br/>
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
-            <div>
-                <button type="submit">Entrar</button>
-            </div>
-        </form>
-    </div>
+			* {
+			    margin: 0;
+			    padding: 0;
+			    box-sizing: border-box;
+			    font-family: "Rubik", sans-serif;
+			}
 
-   		</form>
+			body {
+			    display: flex;
+			    flex-direction: column;
+			    justify-content:space-between;
+			    min-height: 100vh;
+			}
+
+			header {
+			    display: flex;
+			    align-items: center;
+			    justify-content: space-between;
+			    height: 80px;
+			    background-color: #1490D9;
+			    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+			    padding: 0 20px;
+			}
+
+			.sessao-esquerda {
+			    display: flex;
+			    align-items: center;
+			}
+
+			.header-icon {
+			    width: 30px;
+			    height: 30px;
+			    margin-right: 10px; /* Corrigido para margem direita */
+			}
+
+			.header-title {
+			    color: white; /* Certifique-se de que o título esteja visível */
+			    font-size: 25px;
+			    font-weight: bold;
+			}
+
+			.sessao-direita {
+			    display: flex;
+			    align-items: center;
+			}
+
+			.logout-text {
+			    margin-right: 10px;
+			    color: #ffff;
+			    font-size: 20px;
+			}
+
+			.logout-icon {
+			    width: 23px;
+			    height: 23px;
+			    cursor: pointer;
+			}
+
+			.login h2 {
+			    color: #385084;
+			    margin-top: -60px;
+			    margin-bottom: 48%;
+			    text-align: center;
+			    font-size: 28px;
+			}
+
+			.login {
+			    background-color: #F5F5F5;
+			    padding: 100px;
+			    border-radius: 15px;
+			    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+			    max-height:600px;
+			    max-width:400px;
+			    height:100%;
+			    width:100%;
+
+			    align-self:center;
+			}
+
+			input {
+			    padding: 14px;
+			    border: none;
+			    outline: none;
+			    font-size: 14px; /* Corrigido para ser mais legível */
+			    width: 230px;
+			    border-radius: 15px;
+			}
+
+			button {
+			    background-color: #1490D9;
+			    border: none;
+			    padding: 10px; /* Corrigido para melhorar o espaçamento */
+			    border-radius: 10px;
+			    color: #ffff;
+			    margin-top: 30px;
+			    display: block;
+			    width: 40%;
+			    font-size: 14px; /* Corrigido para ser mais legível */
+			}
+
+			button:hover {
+			    background-color: #385084;
+			    cursor:pointer;
+			}
 
 
-      </div>
-     
+	</style>
 
-     <script type="text/javascript" src="./static/js/login.js"></script>
+	<body onload="mostrarAlertaErro()">
+		<header>
+			<div class="mercadofacil">
+				<a > <img
+					src="static/images/edicaoUsuario/logo_mercadofacil.svg" alt="">
+					Mercado Fácil
+				</a>
 
-</body>
-</html>
+			</div>
+		</header>
+
+		<div class="login">
+			<h2>Acesso ao Sistema</h2>
+			<form method="post" action="/PI2-PROJETO/login">
+				<div>
+					<input type="text" id="login" name="login" placeholder="Email"
+						required> <br />
+					<br /> <input type="password" id="senha" name="senha"
+						placeholder="Senha" required>
+					<div>
+						<button style="cursor:poiter;" type="submit">Entrar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+		<footer>© 2024 Code Commiters. All Rights Reserved.</footer>
+
+
+		<script type="text/javascript" src="./static/js/login.js"></script>
+
+	</body>
+	</html>
