@@ -105,8 +105,8 @@ body {
 
 .barra-NOME,
 .barra-EMAIL,
-.barra-CPF,
-.barra-CARGO,
+.barra-ID,
+.barra-SENHA,
 .barra-SITUACAO {
     padding: 5px;
     background-color: white;
@@ -120,8 +120,8 @@ body {
 
 .barra-NOME>input,
 .barra-EMAIL>input,
-.barra-CPF>input,
-.barra-CARGO>input,
+.barra-ID>input,
+.barra-SENHA>input,
 .barra-SITUACAO>input {
     background-color: transparent;
     border: none;
@@ -132,8 +132,8 @@ body {
 
 .barra-NOME>img,
 .barra-EMAIL>img,
-.barra-CPF>img,
-.barra-CARGO>img,
+.barra-ID>img,
+.barra-SENHA>img,
 .barra-SITUACAO>img {
     margin-right: 5px;
     width: 20px;
@@ -160,7 +160,7 @@ body {
     color: gray;
 }
 
-.botao-salvar,
+.botao-procurar,
 .botao-cancelar {
     background-color: #1490D9;
     color: white;
@@ -170,15 +170,16 @@ body {
     max-width: 80px;
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
+    margin: 0px 20px
 }
 
 .botoes{
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;
-    justify-content: space-between;
-    max-width: 150px; /* Limita a largura do contêiner */
-    margin: 0 auto; 
+    justify-content: center;
+	width:100%;
+    margin: 0px; 
 }
 
 

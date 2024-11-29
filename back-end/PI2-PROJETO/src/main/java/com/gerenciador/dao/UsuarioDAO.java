@@ -100,14 +100,16 @@ public class UsuarioDAO {
     }
 
     // Método para deletar um usuário pelo ID
-    public void deletar(int id) throws SQLException {
+    public boolean remover(int idUsuario) throws SQLException {
         String sql = "DELETE FROM Usuario_Interno WHERE Id_Usuario = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, idUsuario);
+
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;  // Retorna true se um usuário foi removido com sucesso
         }
     }
-
     // Método para listar todos os usuários
     public List<Usuario> listarTodos() throws SQLException {
         String sql = "SELECT * FROM Usuario_Interno";

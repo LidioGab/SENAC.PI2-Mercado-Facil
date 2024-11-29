@@ -28,7 +28,40 @@ public class FuncionarioDAO {
             stmt.executeUpdate();
         }
     }
+    
+	    public boolean removerFuncionario(String cpf) throws SQLException {
+	        String sql = "DELETE FROM funcionarios WHERE CPF = ?"; 
+	        
+	        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+	            statement.setString(1, cpf); 
+	            int rowsAffected = statement.executeUpdate();
+	            return rowsAffected > 0; 
+	        }
+	    }
+	    
+	    public Funcionario buscarFuncionarioPorCpf(String cpf) throws SQLException {
+	        String sql = "SELECT * FROM funcionarios WHERE CPF = ?";
 
+	        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+	            statement.setString(1, cpf);
+	            try (ResultSet resultSet = statement.executeQuery()) {
+	                if (resultSet.next()) {
+	                    Funcionario funcionario = new Funcionario();
+	                    funcionario.setId(resultSet.getInt("Id_Funcionario"));
+	                    funcionario.setNome(resultSet.getString("Nome"));
+	                    funcionario.setCpf(resultSet.getString("CPF"));
+	                    funcionario.setEmail(resultSet.getString("Email"));
+	                    funcionario.setCargo(resultSet.getInt("Cargo"));
+	                    funcionario.setSetor(resultSet.getInt("Setor"));
+	                    funcionario.setSituacao(resultSet.getString("Situacao"));
+	                    return funcionario;
+	                }
+	            }
+	        }
+	        return null;
+	    }
+	    
+	    
     public List<Funcionario> buscarPorNomeOuID(String pesquisa) throws SQLException {
         String sql = "SELECT Id_Funcionario, Nome, CPF, Cargo, Setor, Situacao, Email "
                    + "FROM Funcionarios "

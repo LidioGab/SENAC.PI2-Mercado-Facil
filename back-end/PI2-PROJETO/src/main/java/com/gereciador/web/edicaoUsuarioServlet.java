@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.gerenciador.dao.ConnectionFactory;
+import com.gerenciador.dao.FuncionarioDAO;
 import com.gerenciador.dao.UsuarioDAO;
 import com.google.gson.Gson;
 import com.model.Usuario;
@@ -23,6 +24,7 @@ public class edicaoUsuarioServlet extends HttpServlet {
 
 
 	private static final long serialVersionUID = 1L;
+	private UsuarioDAO Usuario;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -99,6 +101,44 @@ public class edicaoUsuarioServlet extends HttpServlet {
 	        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro inesperado.");
 	    }
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+
+	    String idUsuarioStr = request.getParameter("id");
+
+	    if (idUsuarioStr == null || idUsuarioStr.isEmpty()) {
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID do usuário não fornecido.");
+	        return;
+	    }
+
+	    try {
+	        Integer idUsuario = Integer.parseInt(idUsuarioStr);
+
+	        try (Connection connection = new ConnectionFactory().getConnection()) {
+	            UsuarioDAO usuarioDAO = new UsuarioDAO(connection);
+	            
+	            boolean sucesso = usuarioDAO.remover(idUsuario);
+
+	            if (sucesso) {
+	                response.setStatus(HttpServletResponse.SC_OK);
+	                response.getWriter().write("Usuário removido com sucesso.");
+	            } else {
+	                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Usuário não encontrado.");
+	            }
+	        } catch (SQLException e) {
+	            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao conectar ao banco de dados.");
+	        }
+	    } catch (NumberFormatException e) {
+	        response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro inesperado.");
+	    }
+	}
+
+	
 
 	private Map<String, String> parseJsonToMap(String jsonString) {
 		Map<String, String> data = new HashMap<>();

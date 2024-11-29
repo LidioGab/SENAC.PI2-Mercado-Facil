@@ -8,6 +8,190 @@
 
 <title>Editar Funcionario</title>
 </head>
+
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Rubik", sans-serif;
+}
+
+header {
+	background-color: #1490D9;
+	color: #F6F6F6;
+	padding: 10px;
+}
+
+.logo {
+	color: #F6F6F6;
+	text-align: left;
+	font-size: 24px;
+	font-weight: 600;
+	height: 28px;
+	padding: 10px;
+}
+
+.img-header {
+	width: 40px;
+	height: 42px;
+}
+
+.conteudo-header {
+	display: flex;
+	align-items: left;
+	margin: auto;
+	width: 80%;
+}
+
+footer {
+	background-color: #1490D9;
+	padding: 10px;
+	text-align: center;
+	color: #F6F6F6;
+	font-size: 15px;
+	font-weight: 500;
+	position: fixed;
+	bottom: 0;
+	width: 100%;;
+}
+
+.centro {
+	background-color: #F6F6F6;
+	height: 466px;
+	width: 538px;
+	border-radius: 30px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	color: #1490D9;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.texto {
+	font-size: 25px;
+	font-weight: 291.41px;
+	height: 23.84px;
+	margin: 10px;
+	color: #1490D9;
+	vertical-align: text-top;
+	padding: 40px;
+	text-align: center;
+}
+
+#nome, #cargo, #email, #cpf, #cargo, #setor, #situacao {
+	font-size: 15px;
+	color: #1490D9;
+	font-weight: 500;
+	padding: 10px;
+}
+
+input {
+	width: 211px;
+	height: 30px;
+	border-radius: 10px;
+	color: #9A9A9A;
+	background: #ffffff;
+	border: none;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	outline: none;
+}
+
+select {
+	width: 211px;
+	height: 30px;
+	border-radius: 10px;
+	color: #9A9A9A;
+	background: #ffffff;
+	border: none;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	outline: none;
+}
+
+.img-nome {
+	background: url('static/images/EditarFuncionario/account_circle.svg')
+		no-repeat scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.img-email {
+	background: url('static/images/EditarFuncionario/mail.svg') no-repeat
+		scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.img-cpf {
+	background: url('static/images/EditarFuncionario/id_card.svg') no-repeat
+		scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.img-cargo {
+	background: url('static/images/EditarFuncionario/work.svg') no-repeat
+		scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.img-setor {
+	background: url('static/images/EditarFuncionario/work.svg') no-repeat
+		scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.img-situacao {
+	background: url("static/images/EditarFuncionario/situacao.svg")
+		no-repeat scroll 7px 7px;
+	padding-left: 40px;
+}
+
+.input-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.colunas {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	margin: 20px;
+}
+
+.colunas>div {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.botoes {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	margin-top: 30px;
+	gap: 20px;
+}
+
+.botoes:hover {
+	cursor: pointer;
+}
+
+.salvar, .cancelar {
+	width: 93.853px;
+	height: 33.523px;
+	color: #ffffff;
+	background-color: #1490D9;
+	border-radius: 20px;
+	border: none;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+}
+</style>
 <body>
 	<header>
 		<div class="mercadofacil">
@@ -32,6 +216,9 @@
 		<form class="input-section" action="/EditarFuncionario" method="POST">
 			<div class="colunas">
 				<div>
+					<div id="cpf">
+						<label for="cpf">CPF</label> <input type="text" id="CPF" class="img-cpf" placeholder=" CPF" name="cpf" onblur="buscarFuncionario()" required>
+					</div>
 					<div id="nome">
 						<label for="nome">Nome</label> <input type="text" class="img-nome"
 							placeholder=" Nome do usuário" name="nome" required>
@@ -39,10 +226,7 @@
 					<div id="email">
 						<label for="email">Email</label> <input type="email"
 							class="img-email" placeholder=" E-mail" name="email" required>
-					</div>
-					<div id="cpf">
-						<label for="cpf">CPF</label> <input type="text" class="img-cpf"
-							placeholder=" CPF" name="cpf" required>
+
 					</div>
 				</div>
 				<div>
@@ -79,14 +263,13 @@
 								opção...</option>
 							<option value="ativo">Ativo</option>
 							<option value="inativo">Inativo</option>
-							<option value="suspenso">Suspenso</option>
 						</select>
 					</div>
 				</div>
 			</div>
 			<div class="botoes" id="botoes">
 				<button type="button" class="salvar" onclick="atualizar()">Salvar</button>
-				<button type="button" class="cancelar">Cancelar</button>
+				<button type="button" class="cancelar" onClick="remover()">Remover</button>
 			</div>
 		</form>
 
@@ -96,6 +279,43 @@
 	</footer>
 
 	<script>
+	
+	function buscarFuncionario() {
+	    const cpf = document.querySelector('input[name="cpf"]').value;
+
+	    if (!cpf) {
+	        alert("Informe o CPF.");
+	        return;
+	    }
+
+	    fetch(`http://localhost:8080/PI2-PROJETO/BuscarFuncionarioCPF?cpf=${cpf}`)
+	        .then(response => {
+	            if (response.ok) {
+	                return response.json();
+	            } else if (response.status === 404) {
+	                throw new Error("Funcionário não encontrado.");
+	            } else {
+	                return response.text().then(text => { throw new Error(text) });
+	            }
+	        })
+	        .then(data => {
+	            document.querySelector('input[name="nome"]').value = data.nome || '';
+	            document.querySelector('input[name="email"]').value = data.email || '';
+	            document.querySelector('select[name="cargo"]').value = data.cargo || '';
+	            document.querySelector('select[name="setor"]').value = data.setor || '';
+	            document.querySelector('select[name="situacao"]').value = data.situacao || '';
+	        })
+	        .catch(error => {
+	            console.error("Erro:", error);
+	            alert(error.message);
+	            document.querySelector('input[name="nome"]').value = '';
+	            document.querySelector('input[name="email"]').value = '';
+	            document.querySelector('select[name="cargo"]').value = '';
+	            document.querySelector('select[name="setor"]').value = '';
+	            document.querySelector('select[name="situacao"]').value = '';
+	        });
+	}
+	
 	
 	document.getElementById('CPF').addEventListener('input', function(e) {
 		var value = e.target.value;
@@ -113,6 +333,38 @@
 					e.preventDefault();
 				}
 			});
+	
+	function remover() {
+	    const cpf = document.querySelector('input[name="cpf"]').value;
+
+	    if (!cpf) {
+	        alert('Informe o CPF do funcionário a ser removido.');
+	        return;
+	    }
+
+	    const data = {
+	        cpf: cpf
+	    };
+
+	    fetch('http://localhost:8080/PI2-PROJETO/EditarFuncionario', {
+	        method: 'DELETE',
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(data)
+	    })
+	    .then(response => {
+	        if (response.ok) {
+	            alert('Funcionário removido com sucesso!');
+	        } else {
+	            return response.text().then(text => { throw new Error(text) });
+	        }
+	    })
+	    .catch(error => {
+	        console.error('Erro:', error);
+	        alert('Erro ao remover: ' + error.message);
+	    });
+	}
 
 	function atualizar() {
 		const nome = document.querySelector('input[name="nome"]').value;

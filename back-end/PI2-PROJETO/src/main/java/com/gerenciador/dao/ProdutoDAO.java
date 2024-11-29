@@ -46,6 +46,29 @@ public class ProdutoDAO {
         return produtos;
     }
 
+    // Buscar produto apenas por ID
+    public Produto buscarPorId(int idProduto) throws SQLException {
+        String sql = "SELECT Id_Produto, Nome_Produto, Valor_Produto, Categoria, Descricao_Produto FROM Produto WHERE Id_Produto = ?";
+        Produto produto = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idProduto);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    produto = new Produto(
+                        rs.getInt("Id_Produto"),
+                        rs.getString("Nome_Produto"),
+                        rs.getDouble("Valor_Produto"),
+                        rs.getInt("Categoria"),
+                        rs.getString("Descricao_Produto")
+                    );
+                }
+            }
+        }
+        return produto;
+    }
+
     // Inserir produto
     public void inserir(Produto produto) throws SQLException {
         String sql = "INSERT INTO Produto (Nome_Produto, Valor_Produto, Categoria, Descricao_Produto) VALUES (?, ?, ?, ?)";
