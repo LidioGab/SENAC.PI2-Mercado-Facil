@@ -142,7 +142,7 @@ form {
 
             <div class="form-group">
                 <label for="price">Preço</label> 
-                <input type="number" class="form-control" id="price" placeholder="Preço" required>
+                <input type="number" class="form-control" id="price" placeholder="Preço" step="0.01" >
             </div>
 
             <div class="form-group">
@@ -198,7 +198,7 @@ form {
                         }
                     })
                     .catch((error) => {
-                        alert("Erro ao buscar produto: " + error.message);
+                        alert("Erro ao buscar produto verifique o id e tente novamente");
                         console.error(error);
                     });
             }
